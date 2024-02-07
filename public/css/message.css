@@ -1,0 +1,86 @@
+body {
+    background-color: #f2f2f2;
+    padding: 2.5em 6em;
+}
+
+.nav {
+    display: flex;
+}
+
+.nav h1 {
+    margin: 0 0 0 0.5em;
+    color: #305DFF;
+}
+
+.nav__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.63em 0.2em;
+    height: 3em;
+    width: 3em;
+    background-color: #305DFF;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px grey;
+    border: none;
+    cursor: pointer;
+}
+
+.nav__icon-line {
+    height: 65%;
+    width: 65%;
+}
+
+.line1 {
+    height: 1px;
+    width: 50%;
+    background-color: #fff;
+}
+
+.line2 {
+    height: 1px;
+    width: 100%;
+    background-color: #fff;
+    margin-top: 0.5em;
+}
+
+.line3 {
+    height: 1px;
+    width: 25%;
+    background-color: #fff;
+    margin-top: 0.5em;
+}
+
+.message__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 3em;
+}
+
+.message-card {
+    width: 30em;
+    padding: 6em 0;
+    background-color: #fff;
+    box-shadow: 2px 2px 5px grey;
+    border-radius: 5px;
+}
+
+.message-card-msg {
+    margin-bottom: 3em;
+}
+
+.message-card-msg p {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.message-card-btn a {
+    padding: 0.3em 1em;
+    border-radius: 5px;
+    background-color: #305DFF;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}

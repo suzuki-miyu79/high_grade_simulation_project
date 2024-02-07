@@ -1,0 +1,145 @@
+.mypage__content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.reservation-status {
+    width: 35%;
+    margin-top: 5.5em;
+}
+
+.reservation-status__title {
+    margin-bottom: 1.3em;
+}
+
+.favolite-restaurants {
+    width: 54%;
+}
+
+.reservation-status__content {
+    background-color: #305DFF;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px grey;
+    padding: 1em 2em;
+    margin-bottom: 1em;
+    color: #fff;
+}
+
+.reservation-status__content-top__icon img,
+.reservation-status__content-top__cancel img {
+    height: 1.5em;
+    width: 1.5em;
+}
+
+.reservation-status__content-top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.6em;
+}
+
+.reservation-status__content-top__order {
+    margin-left: 2em;
+}
+
+.reservation-status__content-top__cancel {
+    margin-left: auto;
+}
+
+.reservation-status__table {
+    margin-bottom: 0.5em;
+}
+
+.reservation-status__info-column {
+    text-align: left;
+    padding: 0.7em 2.5em 0.7em 0em;
+}
+
+
+.user-name {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 1.2em;
+}
+
+.favolite-restaurants__content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 2em;
+}
+
+.restaurant-card {
+    position: relative;
+    width: 20em;
+    height: 20em;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 2px 2px 5px grey;
+    margin-bottom: 1.5em;
+}
+
+.restaurant-card__img {
+    overflow: hidden;
+}
+
+.restaurant-card__img img {
+    width: 100%;
+    margin-top: -10%;
+}
+
+.restaurant-card__content {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    background-color: #fff;
+    margin: 0;
+    padding: 1.2em;
+}
+
+.content__name p,
+.content__tag p {
+    margin: 0;
+}
+
+.content__name p {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.content__tag {
+    display: flex;
+    font-size: 0.8rem;
+    margin: 0.4em 0 1.4em 0;
+}
+
+.content__tag-area {
+    margin-right: 0.5em;
+}
+
+.restaurant-card__content-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
+.content-bottom__detail-button-submit {
+    padding: 0.4em 1.2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #305DFF;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.content-bottom__favorite-button-submit {
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.fa-heart {
+    font-size: 2.4rem;
+}

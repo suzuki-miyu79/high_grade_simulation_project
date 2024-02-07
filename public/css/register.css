@@ -1,0 +1,62 @@
+main {
+    padding-top: 7em;
+}
+
+.register__content {
+    margin: 0 auto;
+    width: 24em;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 2px 2px 5px grey;
+}
+
+.register__heading {
+    background-color: #305DFF;
+    padding: 0.2em 0 0.2em 1em;
+}
+
+.register__heading h2 {
+    color: #fff;
+    font-size: 1rem;
+}
+
+.register-form {
+    background-color: #fff;
+}
+
+.register-form__input {
+    padding-top: 1.2em;
+    padding-left: 1.5em;
+}
+
+.register-form__input input {
+    border: none;
+    border-bottom: solid 1px #000;
+    margin-left: 0.5em;
+    margin-right: 2em;
+    width: 22em;
+}
+
+.register-form__input input:focus {
+    outline: none;
+}
+
+.register-form__input img {
+    height: 1.5em;
+    width: 1.5em;
+}
+
+
+.register-form__button {
+    padding: 1.3em 1.8em 1.3em 0;
+    text-align: right;
+}
+
+.register-form__button-submit {
+    padding: 0.6em 1.2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #305DFF;
+    color: #fff;
+    cursor: pointer;
+}
