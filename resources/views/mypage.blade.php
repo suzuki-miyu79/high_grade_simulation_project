@@ -8,18 +8,18 @@
     <div class="mypage__content">
         <div class="reservation-status">
             <h2 class="reservation-status__title">予約状況</h2>
-            @foreach ($numberedReservations as $reservation)
+            @foreach ($orderedReservations as $reservation)
                 <div class="reservation-status__content">
                     <div class="reservation-status__content-top">
                         <div class="reservation-status__content-top__icon">
                             <img src="image/clock-icon.png" alt="">
                         </div>
                         <div class="reservation-status__content-top__order">
-                            <p>予約{{ $reservation->number }}</p>
+                            <p>予約{{ $reservation->order }}</p>
                         </div>
                         <div class="reservation-status__content-top__cancel">
-                            <a href="{{ route('reservation.cancel', ['reservation_id' => $reservation->id]) }}">
-                            <img src="image/cancel-icon.png" alt="">
+                            <a href="{{ route('reservation.cancel', ['reservationId' => $reservation->id]) }}">
+                                <img src="image/cancel-icon.png" alt="">
                             </a>
                         </div>
                     </div>
@@ -42,6 +42,21 @@
                                 <td class="reservation-status__info-data-entry">{{ $reservation->number }}人</td>
                             </tr>
                         </table>
+                    </div>
+                    <div class="reservation-status__modify">
+                        <a href="#" onclick="toggleReservationForm('{{ $reservation->id }}')">予約内容を変更する</a>
+                    </div>
+                    <div id="reservation-form-{{ $reservation->id }}" style="display: none;">
+                        <!-- 予約内容を変更するフォーム -->
+                        <form action="{{ route('reservation.update', ['reservationId' => $reservation->id]) }}"
+                            method="post">
+                            @csrf
+                            @method('PUT')
+                            <input type="date" name="reservation_date" value="{{ $reservation->date }}">
+                            <input type="time" name="reservation_time" value="{{ $reservation->time }}">
+                            <input type="number" name="reservation_number" value="{{ $reservation->number }}">
+                            <button type="submit">この内容で予約を変更する</button>
+                        </form>
                     </div>
                 </div>
             @endforeach
@@ -89,4 +104,10 @@
     </div>
     <script src="{{ asset('js/favorite.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/5dc5d1378e.js" crossorigin="anonymous"></script>
+    <script>
+        function toggleReservationForm(reservationId) {
+            var form = document.getElementById('reservation-form-' + reservationId);
+            form.style.display = (form.style.display === 'none') ? 'block' : 'none';
+        }
+    </script>
 @endsection

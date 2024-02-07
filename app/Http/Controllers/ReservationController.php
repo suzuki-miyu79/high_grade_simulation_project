@@ -33,12 +33,27 @@ class ReservationController extends Controller
     }
 
     // 予約取消機能
-    public function cancelReservation($reservation_id)
+    public function cancelReservation($reservationId)
     {
-        $reservation = Reservation::findOrFail($reservation_id);
+        $reservation = Reservation::findOrFail($reservationId);
 
         $reservation->delete();
 
         return redirect()->route('mypage')->with('success', 'Reservation canceled successfully.');
+    }
+
+    // 予約内容変更機能
+    public function updateReservation(Request $request, $reservationId)
+    {
+        $reservation = Reservation::findOrFail($reservationId);
+
+        // 予約情報を更新するロジックを追加
+        $reservation->update([
+            'date' => $request->input('reservation_date'),
+            'time' => $request->input('reservation_time'),
+            'number' => $request->input('reservation_number'),
+        ]);
+
+        return redirect()->route('mypage')->with('success', 'Reservation updated successfully.');
     }
 }

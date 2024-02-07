@@ -43,8 +43,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/done', [ReservationController::class, 'showReserved'])->name('reserved.show');
 
     // 予約取消
-    Route::get('/reservation-cancel/{reservation_id}', [ReservationController::class, 'cancelReservation'])
+    Route::get('/reservation-cancel/{reservationId}', [ReservationController::class, 'cancelReservation'])
         ->name('reservation.cancel');
+
+    //予約内容変更
+    Route::put('/update-reservation/{reservationId}', [ReservationController::class, 'updateReservation'])
+        ->name('reservation.update');
 
     // マイページの表示
     Route::get('/mypage', [MyPageController::class, 'showMyPage'])->name('mypage');

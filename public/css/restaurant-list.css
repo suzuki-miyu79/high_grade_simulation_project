@@ -165,3 +165,42 @@
 .fa-heart {
     font-size: 2.4rem;
 }
+
+
+@media screen and (max-width: 768px) {
+    .restaurant-card {
+        position: relative;
+        width: 18em;
+        height: 18em;
+        background-color: #fff;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 2px 2px 5px grey;
+        margin-bottom: 1.5em;
+    }
+
+    .restaurant-card__content {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        background-color: #fff;
+        margin: 0;
+        padding: 0.8em 1em;
+    }
+
+    .content__tag {
+        display: flex;
+        font-size: 0.8rem;
+        margin: 0.4em 0 1em 0;
+    }
+
+    .content-bottom__detail-button-submit {
+        padding: 0.4em 0.8em;
+        border: none;
+        border-radius: 5px;
+        background-color: #305DFF;
+        color: #fff;
+        cursor: pointer;
+        text-decoration: none;
+    }
+}

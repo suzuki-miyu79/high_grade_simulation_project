@@ -16,14 +16,14 @@ class MyPageController extends Controller
         $user = Auth::user();
 
         // 予約情報を日付順に取得
-        $numberedReservations = Reservation::where('user_id', $user->id)
+        $orderedReservations = Reservation::where('user_id', $user->id)
             ->orderBy('date', 'asc')
             ->get()
             ->map(function ($reservation, $index) {
                 // 予約情報のTimeをフォーマット
                 $reservation->formattedTime = Carbon::createFromFormat('H:i:s', $reservation->time)->format('H:i');
                 // 番号を付ける
-                $reservation->setAttribute('number', $index + 1);
+                $reservation->setAttribute('order', $index + 1);
                 return $reservation;
             });
 
@@ -35,6 +35,6 @@ class MyPageController extends Controller
             return $favorite->restaurant;
         });
 
-        return view('mypage', compact('user', 'numberedReservations', 'restaurants'));
+        return view('mypage', compact('user', 'orderedReservations', 'restaurants'));
     }
 }

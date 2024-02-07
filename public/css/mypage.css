@@ -5,11 +5,11 @@
 
 .reservation-status {
     width: 35%;
-    margin-top: 5.5em;
+    margin-top: 6em;
 }
 
 .reservation-status__title {
-    margin-bottom: 1.3em;
+    margin: 0 0 1.4em 0;
 }
 
 .favolite-restaurants {
@@ -56,9 +56,13 @@
 
 
 .user-name {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: bold;
-    margin-bottom: 1.2em;
+    margin: 0.5em 0 1em 0;
+}
+
+.favolite-restaurants__title {
+    margin: 0;
 }
 
 .favolite-restaurants__content {
@@ -142,4 +146,56 @@
 
 .fa-heart {
     font-size: 2.4rem;
+}
+
+
+@media screen and (max-width: 768px) {
+    .reservation-status {
+        width: 45%;
+        margin-top: 6em;
+    }
+
+    .favolite-restaurants {
+        width: 45%;
+    }
+
+    .favolite-restaurants__content {
+        margin-top: 2em;
+    }
+
+    .restaurant-card {
+        position: relative;
+        width: 18em;
+        height: 18em;
+        background-color: #fff;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 2px 2px 5px grey;
+        margin-bottom: 1.5em;
+    }
+
+    .restaurant-card__content {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        background-color: #fff;
+        margin: 0;
+        padding: 0.8em 1em;
+    }
+
+    .content__tag {
+        display: flex;
+        font-size: 0.8rem;
+        margin: 0.4em 0 1em 0;
+    }
+
+    .content-bottom__detail-button-submit {
+        padding: 0.4em 0.8em;
+        border: none;
+        border-radius: 5px;
+        background-color: #305DFF;
+        color: #fff;
+        cursor: pointer;
+        text-decoration: none;
+    }
 }
