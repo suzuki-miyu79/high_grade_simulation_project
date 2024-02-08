@@ -55,6 +55,11 @@
     color: #305DFF;
 }
 
+.close-menu img {
+    height: 0.5em;
+    width: 0.5em;
+}
+
 @media screen and (max-width: 768px) {
     .modal-content {
         width: 100%;

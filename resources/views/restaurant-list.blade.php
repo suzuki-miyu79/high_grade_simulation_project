@@ -27,6 +27,7 @@
                         </option>
                     @endforeach
                 </select>
+                <div class="line"></div>
                 <select onchange="submit(this.form)" name="genre" id="genre" class="search__form-genre">
                     <option value="">All genre</option>
                     @foreach ($genres as $genre)
@@ -34,9 +35,10 @@
                             {{ request('genre') == $genre->genre_name ? 'selected' : '' }}>{{ $genre->genre_name }}</option>
                     @endforeach
                 </select>
-                <i class="fa-solid fa-magnifying-glass"></i>
+                <div class="line"></div>
+                <img src="image/search-icon.png" alt="">
                 <input type="text" name="keyword" id="keyword" class="search__form-name"
-                    value="{{ request('keyword') }}">
+                    value="{{ request('keyword') }}" placeholder="Search …">
             </div>
         </form>
     </header>

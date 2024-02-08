@@ -52,10 +52,12 @@
 }
 
 .search {
+    display: flex;
+    align-items: center;
     background-color: #fff;
     box-shadow: 2px 2px 5px grey;
     border-radius: 5px;
-    padding: 0.5em;
+    padding: 0.6em;
 }
 
 .fa-magnifying-glass {
@@ -68,7 +70,8 @@
 }
 
 .search input {
-    width: 15em;
+    width: 30em;
+    padding: 0 1em;
 }
 
 .search select:focus,
@@ -79,6 +82,18 @@
 .search select,
 .search input {
     border: 0;
+}
+
+.search img {
+    height: 1em;
+    width: 1em;
+}
+
+.line {
+    background-color: #f2f2f2;
+    margin: 0 0.5em;
+    height: 1.8em;
+    width: 0.1em;
 }
 
 /* 以下main */
