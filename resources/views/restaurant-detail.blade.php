@@ -57,8 +57,8 @@
                         <select id="reservation_time" name="reservation_time" onchange="updateConfirmationInfo()">
                             {{-- 開始時間と終了時間を定義 --}}
                             @php
-                                $startTime = strtotime('17:00');
-                                $endTime = strtotime('22:00');
+                                $startTime = strtotime('0:00');
+                                $endTime = strtotime('23:30');
                             @endphp
 
                             @for ($time = $startTime; $time <= $endTime; $time += 1800)
@@ -80,10 +80,10 @@
                     {{-- 予約人数選択 --}}
                     <div class="reservation__form">
                         <select id="reservation_number" name="reservation_number" onchange="updateConfirmationInfo()">
-                            @for ($i = 1; $i <= 10; $i++)
-                                <option value="{{ $i }}"
-                                    {{ old('reservation_number') == $i ? 'selected' : '' }}>
-                                    {{ $i }}人</option>
+                            @for ($n = 1; $n <= 50; $n++)
+                                <option value="{{ $n }}"
+                                    {{ old('reservation_number') == $n ? 'selected' : '' }}>
+                                    {{ $n }}人</option>
                             @endfor
                         </select>
                         @error('reservation_number')
@@ -124,7 +124,7 @@
         </div>
         {{-- 予約内容の即時表示 --}}
         <script>
-            // セレクトボックスの選択が変更されたときに呼び出される関数
+            // セレクトボックスの選択が変更されたときにビューを更新する
             function updateConfirmationInfo() {
                 var date = document.getElementById('reservation_date').value;
                 var time = document.getElementById('reservation_time').value;
