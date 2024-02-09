@@ -47,6 +47,9 @@
                         <input type="date" id="reservation_date" name="reservation_date"
                             value="{{ old('reservation_date', now()->format('Y-m-d')) }}"
                             onchange="updateConfirmationInfo()">
+                        @error('reservation_date')
+                            <span class="error">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     {{-- 予約時間選択 --}}
@@ -69,6 +72,9 @@
                                 </option>
                             @endfor
                         </select>
+                        @error('reservation_time')
+                            <span class="error">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     {{-- 予約人数選択 --}}
@@ -80,10 +86,10 @@
                                     {{ $i }}人</option>
                             @endfor
                         </select>
+                        @error('reservation_number')
+                            <span class="error">{{ $message }}</span>
+                        @enderror
                     </div>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
 
                     {{-- 予約内容の確認 --}}
                     <div class="confirmation__table">
