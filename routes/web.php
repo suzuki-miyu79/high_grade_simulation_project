@@ -6,6 +6,7 @@ use App\Http\Controllers\RestaurantController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\MyPageController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,9 @@ Route::middleware('auth')->group(function () {
     //予約内容変更
     Route::put('/update-reservation/{reservationId}', [ReservationController::class, 'updateReservation'])
         ->name('reservation.update');
+
+    // レビュー登録
+    Route::post('/reviews/store', [ReviewController::class, 'store'])->name('reviews.store');
 
     // マイページの表示
     Route::get('/mypage', [MyPageController::class, 'showMyPage'])->name('mypage');

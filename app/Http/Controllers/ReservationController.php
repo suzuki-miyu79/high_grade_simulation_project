@@ -47,7 +47,7 @@ class ReservationController extends Controller
     {
         $reservation = Reservation::findOrFail($reservationId);
 
-        // 予約情報を更新するロジックを追加
+        // 予約情報を更新
         $reservation->update([
             'date' => $request->input('reservation_date'),
             'time' => $request->input('reservation_time'),

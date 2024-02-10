@@ -51,14 +51,28 @@
                             </tr>
                         </table>
                     </div>
-                    <div id="modify-button-{{ $reservation->id }}" class="reservation-status__modify">
-                        <div class="reservation-status__modify-button">
-                            <button class="reservation-status__modify-button-submit" href="#"
-                                onclick="toggleReservationForm('{{ $reservation->id }}')">予約内容を変更する</button>
+                    <!-- 予約変更/レビュー投稿ボタン -->
+                    @if ($reservation->hasPassed())
+                        <!-- 予約日時が過ぎた場合レビューボタンを表示 -->
+                        <div id="review-button-{{ $reservation->id }}" class="reservation-status__modify">
+                            <div class="reservation-status__review-button">
+                                <button class="reservation-status__review-button-submit" href="#"
+                                    onclick="toggleReviewForm('{{ $reservation->id }}')">レビューを書く</button>
+                            </div>
                         </div>
-                    </div>
+                    @else
+                        <!-- 予約日時が過ぎていない場合予約変更ボタンを表示 -->
+                        <div id="modify-button-{{ $reservation->id }}" class="reservation-status__modify">
+                            <div class="reservation-status__modify-button">
+                                <button class="reservation-status__modify-button-submit" href="#"
+                                    onclick="toggleReservationForm('{{ $reservation->id }}')">予約内容を変更する</button>
+                            </div>
+                        </div>
+                    @endif
+
+                    {{-- toggleReservationFormで表示するフォーム --}}
                     <div id="reservation-form-{{ $reservation->id }}" style="display: none;">
-                        <!-- 予約内容を変更するフォーム -->
+                        <!-- 予約内容変更フォーム -->
                         <form action="{{ route('reservation.update', ['reservationId' => $reservation->id]) }}"
                             method="post">
                             @csrf
@@ -81,7 +95,6 @@
                                         $startTime = strtotime('0:00');
                                         $endTime = strtotime('23:30');
                                     @endphp
-
                                     @for ($time = $startTime; $time <= $endTime; $time += 1800)
                                         {{-- 30分ずつ増加 --}}
                                         @php
@@ -119,9 +132,38 @@
                             </div>
                         </form>
                     </div>
+
+                    {{-- toggleReviewFormで表示するフォーム --}}
+                    <div id="review-form-{{ $reservation->id }}" style="display: none;">
+                        {{-- レビュー投稿フォーム --}}
+                        <form action="{{ route('reviews.store') }}" method="post">
+                            @csrf
+                            <input type="hidden" name="restaurant_id" value="{{ $reservation->restaurant->id }}">
+                            <div class="evaluation">
+                                <p>お店の満足度</p>
+                                <select name="rating">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                            <div class="comment">
+                                <p>コメント</p>
+                                <textarea name="comment" rows="4"></textarea>
+                            </div>
+                            <div class="reservation-status__review-button">
+                                <button class="reservation-status__review-button-submit"
+                                    type="submit">評価とコメントを送信する</button>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
             @endforeach
         </div>
+
         <div class="favolite-restaurants">
             <p class="user-name">{{ Auth::user()->name }}さん</p>
             <h2 class="favolite-restaurants__title">お気に入り店舗</h2>
@@ -163,12 +205,25 @@
             </div>
         </div>
     </div>
+
     <script src="{{ asset('js/favorite.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/5dc5d1378e.js" crossorigin="anonymous"></script>
     <script>
+        // 予約変更フォームを表示する処理
         function toggleReservationForm(reservationId) {
             var button = document.getElementById('modify-button-' + reservationId);
             var form = document.getElementById('reservation-form-' + reservationId);
+
+            if (button && form) {
+                button.style.display = 'none'; // ボタンを非表示にする
+                form.style.display = 'block'; // フォームを表示する
+            }
+        }
+
+        // レビューフォームを表示する処理
+        function toggleReviewForm(reservationId) {
+            var button = document.getElementById('review-button-' + reservationId);
+            var form = document.getElementById('review-form-' + reservationId);
 
             if (button && form) {
                 button.style.display = 'none'; // ボタンを非表示にする
