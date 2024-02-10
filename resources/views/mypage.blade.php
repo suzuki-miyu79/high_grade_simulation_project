@@ -154,8 +154,7 @@
                                 <textarea name="comment" rows="4"></textarea>
                             </div>
                             <div class="reservation-status__review-button">
-                                <button class="reservation-status__review-button-submit"
-                                    type="submit">評価とコメントを送信する</button>
+                                <button class="reservation-status__review-button-submit" type="submit">レビューを送信する</button>
                             </div>
                         </form>
                     </div>
