@@ -17,10 +17,12 @@
 }
 
 .reservation-status__content {
+    position: relative;
+    overflow: hidden;
     background-color: #305DFF;
     border-radius: 5px;
     box-shadow: 2px 2px 5px grey;
-    padding: 1em 2em;
+    padding: 1em 2em 3em;
     margin-bottom: 1.5em;
     color: #fff;
 }
@@ -46,7 +48,7 @@
 }
 
 .reservation-status__table {
-    margin-bottom: 0.5em;
+    margin-bottom: 1em;
 }
 
 .reservation-status__info-column {
@@ -54,6 +56,50 @@
     padding: 0.6em 2.5em 0.6em 0em;
 }
 
+.reservation-status__modify-button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.reservation-status__modify-button-submit {
+    display: block;
+    width: 100%;
+    padding: 1.2em;
+    background-color: blue;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.reservation__form {
+    margin-bottom: 1em;
+}
+
+.reservation__form span,
+.alert span {
+    display: block;
+    color: red;
+}
+
+.reservation__form input,
+.reservation__form select {
+    border-radius: 5px;
+    border: none;
+    padding: 0.4em;
+}
+
+.reservation__form input {
+    width: 10em;
+}
+
+.reservation__form select {
+    width: 95%;
+}
+
+/* 以下、画面右側 */
 
 .user-name {
     font-size: 2rem;

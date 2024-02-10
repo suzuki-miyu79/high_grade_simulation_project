@@ -80,7 +80,7 @@
                     {{-- 予約人数選択 --}}
                     <div class="reservation__form">
                         <select id="reservation_number" name="reservation_number" onchange="updateConfirmationInfo()">
-                            @for ($n = 1; $n <= 50; $n++)
+                            @for ($n = 1; $n <= 20; $n++)
                                 <option value="{{ $n }}"
                                     {{ old('reservation_number') == $n ? 'selected' : '' }}>
                                     {{ $n }}人</option>

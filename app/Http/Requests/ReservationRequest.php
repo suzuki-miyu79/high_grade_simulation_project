@@ -34,7 +34,7 @@ class ReservationRequest extends FormRequest
                 // 今日の予約で、現時刻より前の時間を禁止
                 Rule::when($this->input('reservation_date') == now()->format('Y-m-d'), 'after_or_equal:' . now()->format('H:i')),
             ],
-            'reservation_number' => 'required|integer|min:1|max:10',
+            'reservation_number' => 'required|integer|min:1|max:20',
         ];
     }
 
@@ -49,7 +49,7 @@ class ReservationRequest extends FormRequest
             'reservation_number.required' => '人数を入力してください',
             'reservation_number.integer' => '整数で入力してください',
             'reservation_number.min' => '1人以上の人数を入力してください',
-            'reservation_number.max' => '10人以下の人数を入力してください',
+            'reservation_number.max' => '20人以下の人数を入力してください',
         ];
     }
 }

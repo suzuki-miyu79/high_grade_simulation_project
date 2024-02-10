@@ -43,7 +43,7 @@ class ReservationController extends Controller
     }
 
     // 予約内容変更機能
-    public function updateReservation(Request $request, $reservationId)
+    public function updateReservation(ReservationRequest $request, $reservationId)
     {
         $reservation = Reservation::findOrFail($reservationId);
 

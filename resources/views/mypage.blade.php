@@ -23,6 +23,14 @@
                             </a>
                         </div>
                     </div>
+
+                    <!-- 代表的なエラーメッセージの表示 -->
+                    @if ($errors->any())
+                        <div class="alert">
+                            <span>{{ $errors->first() }}</span>
+                        </div>
+                    @endif
+
                     <div class="reservation-status__table">
                         <table class="reservation-status__inner">
                             <tr class="reservation-status__info">
@@ -43,8 +51,11 @@
                             </tr>
                         </table>
                     </div>
-                    <div class="reservation-status__modify">
-                        <a href="#" onclick="toggleReservationForm('{{ $reservation->id }}')">予約内容を変更する</a>
+                    <div id="modify-button-{{ $reservation->id }}" class="reservation-status__modify">
+                        <div class="reservation-status__modify-button">
+                            <button class="reservation-status__modify-button-submit" href="#"
+                                onclick="toggleReservationForm('{{ $reservation->id }}')">予約内容を変更する</button>
+                        </div>
                     </div>
                     <div id="reservation-form-{{ $reservation->id }}" style="display: none;">
                         <!-- 予約内容を変更するフォーム -->
@@ -52,10 +63,60 @@
                             method="post">
                             @csrf
                             @method('PUT')
-                            <input type="date" name="reservation_date" value="{{ $reservation->date }}">
-                            <input type="time" name="reservation_time" value="{{ $reservation->time }}">
-                            <input type="number" name="reservation_number" value="{{ $reservation->number }}">
-                            <button type="submit">この内容で予約を変更する</button>
+                            {{-- 予約日選択 --}}
+                            <div class="reservation__form">
+                                {{-- 初期値を予約情報から取得 --}}
+                                <input type="date" id="reservation_date" name="reservation_date"
+                                    value="{{ old('reservation_date', $reservation->date) }}">
+                                @error('reservation_date')
+                                    <span class="error">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            {{-- 予約時間選択 --}}
+                            <div class="reservation__form">
+                                <select id="reservation_time" name="reservation_time">
+                                    {{-- 開始時間と終了時間を定義 --}}
+                                    @php
+                                        $startTime = strtotime('0:00');
+                                        $endTime = strtotime('23:30');
+                                    @endphp
+
+                                    @for ($time = $startTime; $time <= $endTime; $time += 1800)
+                                        {{-- 30分ずつ増加 --}}
+                                        @php
+                                            $formattedTime = date('H:i', $time);
+                                        @endphp
+                                        {{-- 初期値を予約情報から取得 --}}
+                                        <option value="{{ $formattedTime }}"
+                                            {{ old('reservation_time', $reservation->formattedTime) == $formattedTime ? 'selected' : '' }}>
+                                            {{ $formattedTime }}
+                                        </option>
+                                    @endfor
+                                </select>
+                                @error('reservation_time')
+                                    <span class="error">{{ $message }}</span>
+                                @enderror
+                            </div>
+
+                            {{-- 予約人数選択 --}}
+                            <div class="reservation__form">
+                                <select id="reservation_number" name="reservation_number">
+                                    @for ($n = 1; $n <= 20; $n++)
+                                        {{-- 初期値を予約情報から取得 --}}
+                                        <option value="{{ $n }}"
+                                            {{ old('reservation_number', $reservation->number) == $n ? 'selected' : '' }}>
+                                            {{ $n }}人</option>
+                                    @endfor
+                                </select>
+                                @error('reservation_number')
+                                    <span class="error">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="reservation-status__modify-button">
+                                <button class="reservation-status__modify-button-submit"
+                                    type="submit">この内容で予約を変更する</button>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -106,8 +167,13 @@
     <script src="https://kit.fontawesome.com/5dc5d1378e.js" crossorigin="anonymous"></script>
     <script>
         function toggleReservationForm(reservationId) {
+            var button = document.getElementById('modify-button-' + reservationId);
             var form = document.getElementById('reservation-form-' + reservationId);
-            form.style.display = (form.style.display === 'none') ? 'block' : 'none';
+
+            if (button && form) {
+                button.style.display = 'none'; // ボタンを非表示にする
+                form.style.display = 'block'; // フォームを表示する
+            }
         }
     </script>
 @endsection
