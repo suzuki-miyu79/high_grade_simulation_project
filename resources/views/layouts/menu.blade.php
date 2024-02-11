@@ -12,9 +12,7 @@
 <body>
     <div id="menuModal" class="modal">
         <div class="modal-content">
-            <div class="close-menu" onclick="closeMenu()">
-                <img src="{{asset('storage/x-icon.png')}}" alt="">
-            </div>
+            <button class="close-menu" onclick="closeMenu()">&times;</button>
             <div class="modal-content-nav">
                 <ul>
                     @yield('menu1')
