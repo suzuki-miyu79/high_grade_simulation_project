@@ -12,7 +12,7 @@
     margin: 0 0 1.4em 0;
 }
 
-.favolite-restaurants {
+.favorite-restaurants {
     width: 54%;
 }
 
@@ -144,11 +144,11 @@
     margin: 0.5em 0 1em 0;
 }
 
-.favolite-restaurants__title {
+.favorite-restaurants__title {
     margin: 0;
 }
 
-.favolite-restaurants__content {
+.favorite-restaurants__content {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -247,11 +247,11 @@
         margin: 0 1em 0 0;
     }
 
-    .favolite-restaurants {
+    .favorite-restaurants {
         width: 45%;
     }
 
-    .favolite-restaurants__content {
+    .favorite-restaurants__content {
         margin-top: 2em;
     }
 

@@ -163,10 +163,10 @@
             @endforeach
         </div>
 
-        <div class="favolite-restaurants">
+        <div class="favorite-restaurants">
             <p class="user-name">{{ Auth::user()->name }}さん</p>
-            <h2 class="favolite-restaurants__title">お気に入り店舗</h2>
-            <div class="favolite-restaurants__content">
+            <h2 class="favorite-restaurants__title">お気に入り店舗</h2>
+            <div class="favorite-restaurants__content">
                 @foreach ($restaurants as $restaurant)
                     <div class="restaurant-card">
                         <div class="restaurant-card__img">
