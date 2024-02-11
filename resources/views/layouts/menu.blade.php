@@ -13,7 +13,7 @@
     <div id="menuModal" class="modal">
         <div class="modal-content">
             <div class="close-menu" onclick="closeMenu()">
-                <img src="image/x-icon.png" alt="">
+                <img src="{{asset('storage/x-icon.png')}}" alt="">
             </div>
             <div class="modal-content-nav">
                 <ul>
