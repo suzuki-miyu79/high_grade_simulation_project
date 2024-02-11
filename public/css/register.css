@@ -60,3 +60,12 @@ main {
     color: #fff;
     cursor: pointer;
 }
+
+.register-form__error {
+    padding: 0.2em 0 0 1.5em;
+}
+
+.error {
+    color: red;
+    font-size: 0.9em;
+}

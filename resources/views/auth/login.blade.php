@@ -17,16 +17,15 @@
                     <input id="email" class="block mt-1 w-full" type="email" name="email" placeholder="Email"
                         :value="old('email')" required autofocus autocomplete="username" />
                 </div>
-                <div class="login-form__error">
-                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
-                </div>
                 <div class="login-form__input">
                     <img src="image/lock-icon.png" alt="">
                     <input id="password" class="block mt-1 w-full" placeholder="Password" type="password" name="password"
                         required autocomplete="current-password" />
                 </div>
                 <div class="login-form__error">
-                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                    @foreach ($errors->all() as $error)
+                        <span class="error">{{ $error }}</span>
+                    @endforeach
                 </div>
                 <div class="login-form__button">
                     <button class="login-form__button-submit">ログイン</button>
