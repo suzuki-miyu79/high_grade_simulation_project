@@ -1,10 +1,7 @@
 @extends('layouts.menu')
 
-@section('menu1')
+@section('menu')
     <li><a href="/">Home</a></li>
-@endsection
-
-@section('menu2')
     <form method="POST" action="{{ route('logout') }}">
         @csrf
         <li>
@@ -14,8 +11,9 @@
             </a>
         </li>
     </form>
-@endsection
-
-@section('menu3')
     <li><a href="/mypage">Mypage</a></li>
+    @if (auth()->user()->isAdmin())
+        <li><a href="/admin">AdminPage</a></li>
+    @endif
+    <li><a href="/shop-management">ShopManagement</a></li>
 @endsection

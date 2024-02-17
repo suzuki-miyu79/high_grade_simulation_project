@@ -12,8 +12,8 @@ return new class extends Migration {
     {
         Schema::create('restaurants', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('area_id');
-            $table->unsignedBigInteger('genre_id');
+            $table->foreignId('area_id')->constrained();
+            $table->foreignId('genre_id')->constrained();
             $table->string('name', 191);
             $table->text('overview');
             $table->string('image', 255);

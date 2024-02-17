@@ -12,14 +12,11 @@ return new class extends Migration {
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('restaurant_id');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            $table->foreignId('restaurant_id')->constrained()->onDelete('cascade');
             $table->unsignedTinyInteger('rating'); // 五段階評価
             $table->text('comment')->nullable(); // コメント
             $table->timestamps();
-
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('restaurant_id')->references('id')->on('restaurants');
         });
     }
 

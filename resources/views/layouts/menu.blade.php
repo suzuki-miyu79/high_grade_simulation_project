@@ -15,9 +15,7 @@
             <button class="close-menu" onclick="closeMenu()">&times;</button>
             <div class="modal-content-nav">
                 <ul>
-                    @yield('menu1')
-                    @yield('menu2')
-                    @yield('menu3')
+                    @yield('menu')
                 </ul>
             </div>
         </div>

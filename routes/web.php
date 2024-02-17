@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RestaurantController;
@@ -7,6 +8,9 @@ use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\ShopRepresentativeController;
+use App\Http\Middleware\AdminMiddleware;
+use App\Http\Middleware\RepresentativeMiddleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,6 +60,13 @@ Route::middleware('auth')->group(function () {
 
     // マイページの表示
     Route::get('/mypage', [MyPageController::class, 'showMyPage'])->name('mypage');
+
+    // 管理ページの表示
+    Route::get('/admin', [AdminController::class, 'showAdminPage'])->name('admin.show')->middleware(AdminMiddleware::class)->middleware('auth');
+
+    // 店舗管理ページの表示
+    Route::get('/shop-management', [ShopRepresentativeController::class, 'showShopManagement'])->name('shop-managament.show')->middleware(RepresentativeMiddleware::class)->middleware('auth');
+
 });
 
 require __DIR__ . '/auth.php';
