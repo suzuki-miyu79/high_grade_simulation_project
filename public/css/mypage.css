@@ -40,7 +40,7 @@
 }
 
 .reservation-status__content-top__order {
-    margin-left: 2em;
+    margin-left: 3em;
 }
 
 .reservation-status__content-top__cancel {
@@ -235,7 +235,11 @@
 @media screen and (max-width: 768px) {
     .reservation-status {
         width: 45%;
-        margin-top: 6em;
+        margin-top: 5.4em;
+    }
+
+    .reservation-status__content-top__order {
+        margin-left: 2em;
     }
 
     .reservation-status__info-column {
@@ -273,6 +277,12 @@
         background-color: #fff;
         margin: 0;
         padding: 0.8em 1em;
+    }
+
+    .user-name {
+        font-size: 1.8rem;
+        font-weight: bold;
+        margin: 0.5em 0 1em 0;
     }
 
     .content__tag {

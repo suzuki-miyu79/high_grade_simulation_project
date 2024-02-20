@@ -15,7 +15,7 @@
                             <img src="image/clock-icon.png" alt="">
                         </div>
                         <div class="reservation-status__content-top__order">
-                            <p>予約{{ $reservation->order }}</p>
+                            <p>予約{{ $loop->index + 1 }}</p>
                         </div>
                         <div class="reservation-status__content-top__cancel">
                             <a href="{{ route('reservation.cancel', ['reservationId' => $reservation->id]) }}">

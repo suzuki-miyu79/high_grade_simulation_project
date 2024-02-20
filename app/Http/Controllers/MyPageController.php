@@ -23,8 +23,6 @@ class MyPageController extends Controller
             ->map(function ($reservation, $index) {
                 // 予約情報のTimeをフォーマット
                 $reservation->formattedTime = Carbon::createFromFormat('H:i:s', $reservation->time)->format('H:i');
-                // 番号を付ける
-                $reservation->setAttribute('order', $index + 1);
                 return $reservation;
             });
 

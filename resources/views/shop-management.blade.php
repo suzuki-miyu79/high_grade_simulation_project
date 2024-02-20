@@ -22,7 +22,7 @@
                             <img src="image/clock-icon.png" alt="">
                         </div>
                         <div class="reservation-info__content-top__order">
-                            <p>情報</p>
+                            <p>情報{{ $loop->index + 1 }}</p>
                         </div>
                     </div>
                     <div class="reservation-info__table">
