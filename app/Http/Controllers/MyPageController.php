@@ -17,8 +17,8 @@ class MyPageController extends Controller
 
         // 予約情報を日付順、時間順に取得
         $orderedReservations = Reservation::where('user_id', $user->id)
-            ->orderBy('date', 'asc')
-            ->orderBy('time', 'asc')
+            ->orderBy('date')
+            ->orderBy('time')
             ->get()
             ->map(function ($reservation, $index) {
                 // 予約情報のTimeをフォーマット

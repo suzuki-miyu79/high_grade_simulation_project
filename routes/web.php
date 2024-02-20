@@ -65,7 +65,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'showAdminPage'])->name('admin.show')->middleware(AdminMiddleware::class)->middleware('auth');
 
     // 店舗管理ページの表示
-    Route::get('/shop-management', [ShopRepresentativeController::class, 'showShopManagement'])->name('shop-managament.show')->middleware(RepresentativeMiddleware::class)->middleware('auth');
+    Route::get('/shop-management', [ShopRepresentativeController::class, 'index'])->name('shop-managament.index')->middleware(RepresentativeMiddleware::class)->middleware('auth');
+
+    // 店舗画像の保存
+    Route::post('/store-image', [ShopRepresentativeController::class, 'storeImage'])->name('store.image');
 
 });
 

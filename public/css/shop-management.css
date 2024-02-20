@@ -1,0 +1,120 @@
+.shop-management__content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.reservation-info {
+    width: 35%;
+    margin-top: 6em;
+}
+
+.restaurant-info__select {
+    display: flex;
+}
+
+.restaurant-info__select p {
+    margin: 0;
+}
+
+.reservation-info__title {
+    margin: 0 0 1.4em 0;
+}
+
+.favorite-restaurants {
+    width: 54%;
+}
+
+.reservation-info__content {
+    position: relative;
+    overflow: hidden;
+    background-color: #305DFF;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px grey;
+    padding: 1em 2em 3em;
+    margin-bottom: 1.5em;
+    color: #fff;
+}
+
+.reservation-info__content-top__icon img,
+.reservation-info__content-top__cancel img {
+    height: 1.5em;
+    width: 1.5em;
+}
+
+.reservation-info__content-top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.6em;
+}
+
+.reservation-info__content-top__order {
+    margin-left: 2em;
+}
+
+.reservation-info__content-top__cancel {
+    margin-left: auto;
+}
+
+.reservation-info__table {
+    margin-bottom: 1em;
+}
+
+.reservation-info__data-column {
+    text-align: left;
+    padding: 0.6em 4em 0.6em 0em;
+}
+
+.reservation-info__modify-button,
+.reservation-info__review-button {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+.reservation-info__modify-button-submit {
+    display: block;
+    width: 100%;
+    padding: 1.2em;
+    background-color: blue;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.reservation-info__review-button-submit {
+    display: block;
+    width: 100%;
+    padding: 1.2em;
+    background-color: #fff;
+    color: blue;
+    border: none;
+    cursor: pointer;
+}
+
+.reservation__form {
+    margin-bottom: 1em;
+}
+
+.reservation__form span,
+.alert span {
+    display: block;
+    color: red;
+}
+
+.reservation__form input,
+.reservation__form select,
+.evaluation select,
+.comment textarea {
+    border-radius: 5px;
+    border: none;
+    padding: 0.4em;
+}
+
+.reservation__form input {
+    width: 10em;
+}
+
+.reservation__form select {
+    width: 95%;
+}
