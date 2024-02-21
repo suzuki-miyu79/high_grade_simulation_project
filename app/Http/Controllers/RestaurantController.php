@@ -11,6 +11,56 @@ use App\Models\Favorite;
 
 class RestaurantController extends Controller
 {
+    // 店舗情報新規登録
+    public function store(Request $request)
+    {
+        // 画像のアップロード処理
+        if ($request->hasFile('image')) {
+            // 画像を保存してパスを取得
+            $imagePath = $request->file('image')->store('images', 'public');
+        }
+
+        // 新しい店舗を作成
+        $restaurant = new Restaurant();
+        $restaurant->name = $request->input('name');
+        $restaurant->area_id = $request->input('area');
+        $restaurant->genre_id = $request->input('genre');
+        $restaurant->overview = $request->input('overview');
+        // 画像がアップロードされていれば、パスを保存
+        if (isset($imagePath)) {
+            $restaurant->image = $imagePath;
+        }
+        $restaurant->save();
+
+        // 成功メッセージをフラッシュしてリダイレクト
+        return redirect()->back()->with('success', '店舗が登録されました。');
+    }
+
+    // 店舗情報更新
+    public function update(Request $request, $id)
+    {
+        // 画像のアップロード処理
+        if ($request->hasFile('image')) {
+            // 画像を保存してパスを取得
+            $imagePath = $request->file('image')->store('images', 'public');
+        }
+
+        // 既存の店舗情報を取得
+        $restaurant = Restaurant::findOrFail($id);
+        $restaurant->name = $request->input('name');
+        $restaurant->area_id = $request->input('area');
+        $restaurant->genre_id = $request->input('genre');
+        $restaurant->overview = $request->input('overview');
+        // 画像がアップロードされていれば、パスを保存
+        if (isset($imagePath)) {
+            $restaurant->image = $imagePath;
+        }
+        $restaurant->save();
+
+        // 成功メッセージをフラッシュしてリダイレクト
+        return redirect()->back()->with('success', '店舗情報が更新されました。');
+    }
+
     // 飲食店一覧取得
     public function index(Request $request)
     {

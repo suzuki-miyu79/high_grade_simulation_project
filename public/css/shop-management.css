@@ -1,27 +1,32 @@
 .shop-management__content {
     display: flex;
     justify-content: space-between;
+    margin-top: 3em;
 }
 
 .reservation-info {
     width: 35%;
-    margin-top: 6em;
 }
 
 .restaurant-info__select {
     display: flex;
+    align-items: center;
+    margin-bottom: 3em;
 }
 
 .restaurant-info__select p {
     margin: 0;
+    font-size: 1.2rem;
+}
+
+.restaurant-info__select select {
+    padding: 0.3em;
+    width: 10em;
+    font-size: 1.2rem;
 }
 
 .reservation-info__title {
     margin: 0 0 1.4em 0;
-}
-
-.favorite-restaurants {
-    width: 54%;
 }
 
 .reservation-info__content {
@@ -92,31 +97,14 @@
     cursor: pointer;
 }
 
-.reservation__form {
-    margin-bottom: 1em;
+.restaurant-info {
+    width: 54%;
 }
 
-.reservation__form span,
-.alert span {
-    display: block;
-    color: red;
-}
-
-.reservation__form input,
-.reservation__form select,
-.evaluation select,
-.comment textarea {
-    border-radius: 5px;
-    border: none;
-    padding: 0.4em;
-}
-
-.reservation__form input {
-    width: 10em;
-}
-
-.reservation__form select {
-    width: 95%;
+.authority-name {
+    margin: 0 0 1.15em 0;
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 @media screen and (max-width: 768px) {

@@ -67,8 +67,11 @@ Route::middleware('auth')->group(function () {
     // 店舗管理ページの表示
     Route::get('/shop-management', [ShopRepresentativeController::class, 'index'])->name('shop-managament.index')->middleware(RepresentativeMiddleware::class)->middleware('auth');
 
-    // 店舗画像の保存
-    Route::post('/store-image', [ShopRepresentativeController::class, 'storeImage'])->name('store.image');
+    // 店舗情報登録
+    Route::post('/restaurant/store', [RestaurantController::class, 'store'])->name('restaurant.store');
+
+    // 店舗情報更新
+    Route::post('/restaurant/update', [RestaurantController::class, 'update'])->name('restaurant.update');
 
 });
 
