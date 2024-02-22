@@ -49,6 +49,9 @@
                                 <th class="reservation-status__info-column">Number</th>
                                 <td class="reservation-status__info-data-entry">{{ $reservation->number }}人</td>
                             </tr>
+                            <tr>
+                                <td><img src="{{ url($reservation->qr_code_path) }}" alt="QR Code"></td>
+                            </tr>
                         </table>
                     </div>
                     <!-- 予約変更/レビュー投稿ボタン -->

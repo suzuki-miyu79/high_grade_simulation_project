@@ -61,6 +61,7 @@
                         action="{{ isset($restaurant) ? route('restaurant.update', $restaurant->id) : route('restaurant.store') }}"
                         method="post" enctype="multipart/form-data">
                         @csrf
+                        <input type="hidden" id="restaurant_id" name="restaurant_id" value="{{ $restaurant->id ?? '' }}">
                         <div class="restaurant-info__form">
                             <p>店名</p>
                             <input type="text" id="name" name="name" value="{{ $restaurant->name ?? '' }}">
@@ -107,6 +108,7 @@
         // 新規作成ボタンがクリックされたときの処理
         document.getElementById('new-create-button').addEventListener('click', function() {
             // フォームの内容をクリアする処理
+            document.getElementById('restaurant_id').value = '';
             document.getElementById('name').value = '';
             document.getElementById('image').value = '';
             document.getElementById('area').selectedIndex = 0;
