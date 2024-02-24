@@ -26,10 +26,9 @@ class ReservationController extends Controller
         ]);
 
         // 予約情報を含む文字列を作成
-        $reservationData = "Reservation ID: " . $reservation->id . ", User: " . $reservation->user->name . ", Date: " . $reservation->date . ", Time: " . $reservation->time;
+        $reservationData = "Reservation ID: " . $reservation->id;
 
         // QRコードを生成して保存
-        $reservationData = mb_convert_encoding($reservationData, 'UTF-8');
         $qrCode = QrCode::size(200)->generate($reservationData);
         $qrCodePath = 'storage/qrcodes/reservation_' . $reservation->id . '.png';
         Storage::put($qrCodePath, $qrCode);

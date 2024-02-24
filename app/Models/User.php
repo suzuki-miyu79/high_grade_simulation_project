@@ -63,6 +63,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(Reservation::class);
     }
 
+    // Restaurant モデルとのリレーションシップ
+    public function restaurants()
+    {
+        return $this->hasMany(Restaurant::class);
+    }
+
     public function isAdmin()
     {
         return $this->role === 'admin';

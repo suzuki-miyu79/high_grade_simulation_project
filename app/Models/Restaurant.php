@@ -14,7 +14,7 @@ class Restaurant extends Model
     use HasFactory;
 
     protected $table = 'restaurants';
-    protected $fillable = ['area_id', 'genre_id', 'name', 'overview', 'image'];
+    protected $fillable = ['area_id', 'genre_id', 'name', 'overview', 'image', 'user_id'];
 
     // ユーザーがこのレストランをお気に入りに追加しているかどうかを判定
     public function isFavoritedByUser($user)
@@ -35,10 +35,16 @@ class Restaurant extends Model
         return $this->belongsTo(Genre::class, 'genre_id');
     }
 
+    // User モデルとのリレーションシップ
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     // Favorite モデルとのリレーションシップ
     public function favorites()
     {
-        return $this->hasMany(Favorite::class, );
+        return $this->hasMany(Favorite::class);
     }
 
     // Reservation モデルとのリレーションシップ
@@ -50,6 +56,6 @@ class Restaurant extends Model
     // Representativeモデルとのリレーションシップ
     public function representatives()
     {
-        return $this->hasMany(Reservation::class);
+        return $this->hasMany(Representative::class);
     }
 }

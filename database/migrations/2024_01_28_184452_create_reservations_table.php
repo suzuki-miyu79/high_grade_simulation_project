@@ -17,6 +17,7 @@ return new class extends Migration {
             $table->date('date');
             $table->time('time');
             $table->integer('number');
+            $table->string('qr_code_path')->nullable(); // QRコードのパス
             $table->timestamps();
         });
     }
