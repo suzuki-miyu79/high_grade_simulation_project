@@ -65,13 +65,13 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin', [AdminController::class, 'showAdminPage'])->name('admin.show')->middleware(AdminMiddleware::class)->middleware('auth');
 
     // 店舗管理ページの表示
-    Route::get('/shop-management', [ShopRepresentativeController::class, 'index'])->name('shop-managament.index')->middleware(RepresentativeMiddleware::class)->middleware('auth');
+    Route::get('/shop-management', [ShopRepresentativeController::class, 'index'])->name('shop-management.index')->middleware(RepresentativeMiddleware::class)->middleware('auth');
 
     // 店舗情報登録
-    Route::post('/restaurant/store', [RestaurantController::class, 'store'])->name('restaurant.store');
+    Route::post('/shop-management/store', [RestaurantController::class, 'store'])->name('restaurant.store');
 
     // 店舗情報更新
-    Route::post('/restaurant/update', [RestaurantController::class, 'update'])->name('restaurant.update');
+    Route::put('/shop-management/update/{id}', [RestaurantController::class, 'update'])->name('restaurant.update');
 
 });
 

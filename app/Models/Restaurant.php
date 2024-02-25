@@ -52,10 +52,4 @@ class Restaurant extends Model
     {
         return $this->hasMany(Reservation::class);
     }
-
-    // Representativeモデルとのリレーションシップ
-    public function representatives()
-    {
-        return $this->hasMany(Representative::class);
-    }
 }

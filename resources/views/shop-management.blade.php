@@ -9,9 +9,21 @@
         <div class="reservation-info">
             <div class="restaurant-info__select">
                 <p>店舗選択：</p>
-                <select name="restaurant" id="restaurant">
-                    <option value="{{ $restaurantName }}">{{ $restaurantName }}</option>
-                </select>
+                @if (!is_null($selectedRestaurantId))
+                    <form method="GET" action="{{ route('shop-management.index') }}">
+                        @csrf
+                        <select name="selected_restaurant_id" id="selected_restaurant_id" onchange="this.form.submit()">
+                            @foreach ($managedRestaurants as $restaurant)
+                                <option value="{{ $restaurant->id }}"
+                                    {{ $restaurant->id == $selectedRestaurantId ? 'selected' : '' }}>
+                                    {{ $restaurant->name }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </form>
+                @else
+                    <p>店舗を選択してください。</p>
+                @endif
             </div>
             <h2 class="reservation-info__title">予約情報</h2>
 
@@ -57,53 +69,58 @@
                     <button id="new-create-button">新規作成</button>
                 </div>
                 <div class="restaurant-info__create-inner">
-                    <form
-                        action="{{ isset($restaurant) ? route('restaurant.update', $restaurant->id) : route('restaurant.store') }}"
-                        method="post" enctype="multipart/form-data">
-                        @csrf
-                        <input type="hidden" id="restaurant_id" name="restaurant_id" value="{{ $restaurant->id ?? '' }}">
-                        <div class="restaurant-info__form">
-                            <p>店名</p>
-                            <input type="text" id="name" name="name" value="{{ $restaurant->name ?? '' }}">
-                        </div>
-                        <div class="restaurant-info__form">
-                            <p>画像</p>
-                            <input type="file" id="image" name="image">
-                        </div>
-                        <div class="restaurant-info__form">
-                            <p>エリア</p>
-                            <select id="area" name="area">
-                                @foreach ($areas as $area)
-                                    <option value="{{ $area->id }}"
-                                        {{ $currentArea && $currentArea->id == $area->id ? 'selected' : '' }}>
-                                        {{ $area->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="restaurant-info__form">
-                            <p>ジャンル</p>
-                            <select id="genre" name="genre">
-                                @foreach ($genres as $genre)
-                                    <option value="{{ $genre->id }}"
-                                        {{ $currentGenre && $currentGenre->id == $genre->id ? 'selected' : '' }}>
-                                        {{ $genre->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="restaurant-info__form--textarea">
-                            <p>説明</p>
-                            <textarea id="overview" name="overview" cols="30" rows="10">{{ $restaurant->overview ?? '' }}</textarea>
-                        </div>
-                        <div class="restaurant-info__form--button">
-                            <button type="submit" id="register-button"
-                                class="restaurant-info__form--button-submit">登録</button>
-                        </div>
-                    </form>
+                    @if (!is_null($selectedRestaurant))
+                        <form id="restaurant_form" action="{{ route('restaurant.update', $selectedRestaurant->id) }}"
+                            method="post" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
+                            <input type="hidden" id="restaurant_id" name="restaurant_id"
+                                value="{{ $selectedRestaurant->id ?? '' }}">
+                            <div class="restaurant-info__form">
+                                <p>店名</p>
+                                <input type="text" id="name" name="name"
+                                    value="{{ $selectedRestaurant->name ?? '' }}">
+                            </div>
+                            <div class="restaurant-info__form">
+                                <p>画像</p>
+                                <input type="file" id="image" name="image">
+                            </div>
+                            <div class="restaurant-info__form">
+                                <p>エリア</p>
+                                <select id="area" name="area">
+                                    @foreach ($areas as $area)
+                                        <option value="{{ $area->id }}"
+                                            {{ $currentArea && $currentArea->id == $area->id ? 'selected' : '' }}>
+                                            {{ $area->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="restaurant-info__form">
+                                <p>ジャンル</p>
+                                <select id="genre" name="genre">
+                                    @foreach ($genres as $genre)
+                                        <option value="{{ $genre->id }}"
+                                            {{ $currentGenre && $currentGenre->id == $genre->id ? 'selected' : '' }}>
+                                            {{ $genre->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="restaurant-info__form--textarea">
+                                <p>説明</p>
+                                <textarea id="overview" name="overview" cols="30" rows="10">{{ $selectedRestaurant->overview ?? '' }}</textarea>
+                            </div>
+                            <div class="restaurant-info__form--button">
+                                <button type="submit" id="register-button"
+                                    class="restaurant-info__form--button-submit">登録</button>
+                            </div>
+                        </form>
+                    @else
+                        <p>店舗を選択してください。</p>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
-
     <script>
         // 新規作成ボタンがクリックされたときの処理
         document.getElementById('new-create-button').addEventListener('click', function() {

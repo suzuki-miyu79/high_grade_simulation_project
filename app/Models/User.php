@@ -21,6 +21,7 @@ class User extends Authenticatable implements MustVerifyEmail
      */
     protected $fillable = [
         'name',
+        'role',
         'email',
         'password',
     ];
@@ -53,12 +54,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     // Reservation モデルとのリレーションシップ
     public function reservations()
-    {
-        return $this->hasMany(Reservation::class);
-    }
-
-    // Reservation モデルとのリレーションシップ
-    public function representatives()
     {
         return $this->hasMany(Reservation::class);
     }
