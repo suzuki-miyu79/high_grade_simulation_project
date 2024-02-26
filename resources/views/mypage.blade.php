@@ -50,7 +50,9 @@
                                 <td class="reservation-status__info-data-entry">{{ $reservation->number }}人</td>
                             </tr>
                             <tr>
-                                <td><img src="{{ url($reservation->qr_code_path) }}" alt="QR Code"></td>
+                                <td colspan="3">
+                                    <img src="{{ asset($reservation->qr_code_path) }}" alt="QR Code">
+                                </td>
                             </tr>
                         </table>
                     </div>

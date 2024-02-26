@@ -29,12 +29,12 @@ class ReservationController extends Controller
         $reservationData = "Reservation ID: " . $reservation->id;
 
         // QRコードを生成して保存
-        $qrCode = QrCode::size(200)->generate($reservationData);
-        $qrCodePath = 'storage/qrcodes/reservation_' . $reservation->id . '.png';
-        Storage::put($qrCodePath, $qrCode);
+        $qrCode = QrCode::size(200)->format('png')->generate($reservationData);
+        $qrCodePath = 'qrcodes/reservation_' . $reservation->id . '.png';
+        Storage::put('public/' . $qrCodePath, $qrCode);
 
         // 予約にQRコードのパスを保存
-        $reservation->qr_code_path = $qrCodePath;
+        $reservation->qr_code_path = 'storage/' . $qrCodePath;
         $reservation->save();
 
         return redirect()->route('reserved.show', ['restaurant_id' => $restaurant_id]);
