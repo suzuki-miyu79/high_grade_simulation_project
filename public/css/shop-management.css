@@ -23,6 +23,7 @@
     padding: 0.3em;
     width: 10em;
     font-size: 1.2rem;
+    border-radius: 5px;
 }
 
 .reservation-info__title {
@@ -105,6 +106,31 @@
     margin: 0 0 1.15em 0;
     font-size: 2rem;
     font-weight: bold;
+}
+
+.restaurant-info__create button {
+    padding: 0.6em 1.2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #305DFF;
+    color: #fff;
+    cursor: pointer;
+}
+
+.restaurant-info__create-inner {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px grey;
+    padding: 2em;
+}
+
+.restaurant-info__form {
+    display: flex;
+    margin-bottom: 1em;
+}
+
+.restaurant-info__form p {
+    margin: 0;
 }
 
 @media screen and (max-width: 768px) {

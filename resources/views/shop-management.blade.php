@@ -9,21 +9,17 @@
         <div class="reservation-info">
             <div class="restaurant-info__select">
                 <p>店舗選択：</p>
-                @if (!is_null($selectedRestaurantId))
-                    <form method="GET" action="{{ route('shop-management.index') }}">
-                        @csrf
-                        <select name="selected_restaurant_id" id="selected_restaurant_id" onchange="this.form.submit()">
-                            @foreach ($managedRestaurants as $restaurant)
-                                <option value="{{ $restaurant->id }}"
-                                    {{ $restaurant->id == $selectedRestaurantId ? 'selected' : '' }}>
-                                    {{ $restaurant->name }}
-                                </option>
-                            @endforeach
-                        </select>
-                    </form>
-                @else
-                    <p>店舗を選択してください。</p>
-                @endif
+                <form method="GET" action="{{ route('shop-management.index') }}">
+                    @csrf
+                    <select name="selected_restaurant_id" id="selected_restaurant_id" onchange="this.form.submit()">
+                        @foreach ($managedRestaurants as $restaurant)
+                            <option value="{{ $restaurant->id }}"
+                                {{ $restaurant->id == $selectedRestaurantId ? 'selected' : '' }}>
+                                {{ $restaurant->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                </form>
             </div>
             <h2 class="reservation-info__title">予約情報</h2>
 
@@ -77,16 +73,16 @@
                             <input type="hidden" id="restaurant_id" name="restaurant_id"
                                 value="{{ $selectedRestaurant->id ?? '' }}">
                             <div class="restaurant-info__form">
-                                <p>店名</p>
+                                <p>店名：</p>
                                 <input type="text" id="name" name="name"
                                     value="{{ $selectedRestaurant->name ?? '' }}">
                             </div>
                             <div class="restaurant-info__form">
-                                <p>画像</p>
+                                <p>画像：</p>
                                 <input type="file" id="image" name="image">
                             </div>
                             <div class="restaurant-info__form">
-                                <p>エリア</p>
+                                <p>エリア：</p>
                                 <select id="area" name="area">
                                     @foreach ($areas as $area)
                                         <option value="{{ $area->id }}"
@@ -96,7 +92,7 @@
                                 </select>
                             </div>
                             <div class="restaurant-info__form">
-                                <p>ジャンル</p>
+                                <p>ジャンル：</p>
                                 <select id="genre" name="genre">
                                     @foreach ($genres as $genre)
                                         <option value="{{ $genre->id }}"
@@ -106,7 +102,7 @@
                                 </select>
                             </div>
                             <div class="restaurant-info__form--textarea">
-                                <p>説明</p>
+                                <p>説明：</p>
                                 <textarea id="overview" name="overview" cols="30" rows="10">{{ $selectedRestaurant->overview ?? '' }}</textarea>
                             </div>
                             <div class="restaurant-info__form--button">

@@ -53,7 +53,7 @@ class RestaurantController extends Controller
         $restaurant->overview = $request->input('overview');
         // 画像がアップロードされていれば、パスを保存
         if (isset($imagePath)) {
-            $restaurant->image = $imagePath;
+            $restaurant->image = asset('storage/' . $imagePath);
         }
         $restaurant->save();
 
