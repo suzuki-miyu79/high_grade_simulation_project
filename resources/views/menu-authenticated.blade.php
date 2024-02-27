@@ -12,8 +12,9 @@
         </li>
     </form>
     <li><a href="/mypage">Mypage</a></li>
-    @if (auth()->user()->isAdmin())
+    @if (auth()->user()->role === 'admin')
         <li><a href="/admin">AdminPage</a></li>
+    @elseif(auth()->user()->role === 'representative')
+        <li><a href="/shop-management">ShopManagement</a></li>
     @endif
-    <li><a href="/shop-management">ShopManagement</a></li>
 @endsection
