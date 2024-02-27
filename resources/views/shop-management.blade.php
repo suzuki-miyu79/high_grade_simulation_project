@@ -73,16 +73,16 @@
                             <input type="hidden" id="restaurant_id" name="restaurant_id"
                                 value="{{ $selectedRestaurant->id ?? '' }}">
                             <div class="restaurant-info__form">
-                                <p>店名：</p>
+                                <label>店名：</label>
                                 <input type="text" id="name" name="name"
                                     value="{{ $selectedRestaurant->name ?? '' }}">
                             </div>
                             <div class="restaurant-info__form">
-                                <p>画像：</p>
+                                <label>画像：</label>
                                 <input type="file" id="image" name="image">
                             </div>
                             <div class="restaurant-info__form">
-                                <p>エリア：</p>
+                                <label>エリア：</label>
                                 <select id="area" name="area">
                                     @foreach ($areas as $area)
                                         <option value="{{ $area->id }}"
@@ -92,7 +92,7 @@
                                 </select>
                             </div>
                             <div class="restaurant-info__form">
-                                <p>ジャンル：</p>
+                                <label>ジャンル：</label>
                                 <select id="genre" name="genre">
                                     @foreach ($genres as $genre)
                                         <option value="{{ $genre->id }}"
@@ -102,7 +102,7 @@
                                 </select>
                             </div>
                             <div class="restaurant-info__form--textarea">
-                                <p>説明：</p>
+                                <label>説明：</label>
                                 <textarea id="overview" name="overview" cols="30" rows="10">{{ $selectedRestaurant->overview ?? '' }}</textarea>
                             </div>
                             <div class="restaurant-info__form--button">
