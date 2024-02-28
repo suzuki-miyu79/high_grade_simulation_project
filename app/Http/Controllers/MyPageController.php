@@ -27,7 +27,7 @@ class MyPageController extends Controller
                 return $reservation;
             });
 
-        // QRコードを生成するための情報を含んだ文字列を準備
+        // QRコードを生成するための情報を準備
         $qrCodeData = '';
         foreach ($orderedReservations as $reservation) {
             $qrCodeData .= "Restaurant: " . $reservation->restaurant->name . "\n";
@@ -49,7 +49,6 @@ class MyPageController extends Controller
             return $favorite->restaurant;
         });
 
-        // ビューにQRコードを含む情報を渡す
         return view('mypage', compact('user', 'orderedReservations', 'restaurants', 'qrCodeBase64'));
     }
 }

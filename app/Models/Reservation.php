@@ -13,7 +13,7 @@ class Reservation extends Model
     use HasFactory;
 
     protected $table = 'reservations';
-    protected $fillable = ['user_id', 'restaurant_id', 'date', 'time', 'number', 'qr_code_path'];
+    protected $fillable = ['user_id', 'restaurant_id', 'date', 'time', 'number'];
 
     // User モデルとのリレーションシップ
     public function user()
