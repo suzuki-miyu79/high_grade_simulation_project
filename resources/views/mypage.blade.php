@@ -51,7 +51,7 @@
                             </tr>
                             <tr>
                                 <td colspan="3">
-                                    <img src="{{ asset($reservation->qr_code_path) }}" alt="QR Code">
+                                    <img src="data:image/png;base64,{{ $qrCodeBase64 }}" alt="QR Code">
                                 </td>
                             </tr>
                         </table>
