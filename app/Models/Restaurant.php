@@ -14,7 +14,7 @@ class Restaurant extends Model
     use HasFactory;
 
     protected $table = 'restaurants';
-    protected $fillable = ['area_id', 'genre_id', 'name', 'overview', 'image', 'user_id'];
+    protected $fillable = ['user_id', 'area_id', 'genre_id', 'name', 'overview', 'image'];
 
     // ユーザーがこのレストランをお気に入りに追加しているかどうかを判定
     public function isFavoritedByUser($user)
