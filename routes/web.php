@@ -64,6 +64,9 @@ Route::middleware('auth')->group(function () {
     // 管理ページの表示
     Route::get('/admin', [AdminController::class, 'showAdminPage'])->name('admin.show')->middleware(AdminMiddleware::class)->middleware('auth');
 
+    // メール送信フォームの表示
+    Route::get('/mailform', [AdminController::class, 'showMailForm'])->name('mailform.show');
+
     // メール送信
     Route::post('/send-mail', [AdminController::class, 'sendMail'])->name('send.mail');
 
