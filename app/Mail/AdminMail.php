@@ -7,18 +7,25 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
+use Illuminate\Mail\Mailables\Address;
 use Illuminate\Queue\SerializesModels;
 
 class AdminMail extends Mailable
 {
     use Queueable, SerializesModels;
 
+    //受け取る変数
+    public $subject;
+    public $message;
+
     /**
      * Create a new message instance.
      */
-    public function __construct()
+    public function __construct($subject, $message)
     {
-        //
+        //変数に受け取った値をセット
+        $this->subject = $subject;
+        $this->message = $message;
     }
 
     /**
@@ -27,7 +34,8 @@ class AdminMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Admin Mail',
+            subject: 'Reseからのお知らせ',
+            from: new Address('authentication.laravel@gmail.com', 'Rese'),
         );
     }
 
@@ -37,7 +45,11 @@ class AdminMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'mail.mail',
+            view: 'mail.main-message',
+            with: [
+                'subject' => $this->subject,
+                'text' => $this->message
+            ],
         );
     }
 

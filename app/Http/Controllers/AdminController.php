@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Mail\AdminMail;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 
 class AdminController extends Controller
 {
@@ -17,7 +18,7 @@ class AdminController extends Controller
     // メール送信フォーム表示
     public function showMailForm()
     {
-        return view('mail.mail');
+        return view('mail');
     }
 
     // メール送信機能
@@ -35,6 +36,8 @@ class AdminController extends Controller
             // メール送信成功時の処理
             return redirect()->back()->with('success', 'メールが正常に送信されました。');
         } catch (\Exception $e) {
+            // メール送信失敗時にログを記録する
+            Log::error('メールの送信中にエラーが発生しました。', ['exception' => $e]);
             // メール送信失敗時の処理
             return redirect()->back()->with('error', 'メールの送信中にエラーが発生しました。');
         }
