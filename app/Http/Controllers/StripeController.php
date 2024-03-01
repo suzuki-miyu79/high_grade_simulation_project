@@ -14,7 +14,7 @@ class StripeController extends Controller
 
         $charge = Charge::create(
             array(
-                'amount' => 100,
+                'amount' => 1000,
                 'currency' => 'jpy',
                 'source' => request()->stripeToken,
             )
