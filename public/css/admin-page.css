@@ -1,0 +1,30 @@
+.manager-page__content p {
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 0 1.5em 0 0;
+}
+
+.store-representative_register,
+.store-representative_mailform {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 20em;
+    height: 8em;
+    border: none;
+    border-radius: 5px;
+    background-color: #305DFF;
+    color: #fff;
+    cursor: pointer;
+}
+
+.store-representative_register {
+    margin-bottom: 1em;
+}
+
+.store-representative_register__button,
+.store-representative_mailform__button {
+    text-decoration: none;
+    color: #fff;
+}

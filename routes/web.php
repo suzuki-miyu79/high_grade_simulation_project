@@ -76,7 +76,6 @@ Route::middleware('auth')->group(function () {
     // 登録完了ページ表示
     Route::get('/registered', [AdminController::class, 'showRegistered'])->name('registered.show');
 
-
     // メール送信フォームの表示
     Route::get('/mailform', [AdminController::class, 'showMailForm'])->name('mailform.show');
 
