@@ -65,6 +65,18 @@ Route::middleware('auth')->group(function () {
     // 管理ページの表示
     Route::get('/admin', [AdminController::class, 'showAdminPage'])->name('admin.show')->middleware(AdminMiddleware::class)->middleware('auth');
 
+    // 店舗代表者登録ページ表示
+    Route::get('/representative-register', [AdminController::class, 'showRepresentativeRegister'])
+        ->name('register.show');
+
+    // 店舗代表者登録
+    Route::post('/representative-register', [AdminController::class, 'register'])
+        ->name('representative.register');
+
+    // 登録完了ページ表示
+    Route::get('/registered', [AdminController::class, 'showRegistered'])->name('registered.show');
+
+
     // メール送信フォームの表示
     Route::get('/mailform', [AdminController::class, 'showMailForm'])->name('mailform.show');
 

@@ -7,6 +7,10 @@ use App\Mail\AdminMail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Log;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules;
 
 class AdminController extends Controller
 {
@@ -14,6 +18,39 @@ class AdminController extends Controller
     public function showAdminPage()
     {
         return view('admin-page');
+    }
+
+    // 店舗代表者登録ページ表示
+    public function showRepresentativeRegister()
+    {
+        return view('representative-register');
+    }
+
+    // 店舗代表者登録機能
+    public function register(Request $request): RedirectResponse
+    {
+        $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:' . User::class],
+            'password' => ['required', Rules\Password::defaults()],
+        ]);
+
+        $user = User::create([
+            'name' => $request->name,
+            'role' => 'representative',
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        event(new Registered($user));
+
+        return redirect()->route('registered.show');
+    }
+
+    // 登録完了ページ表示
+    public function showRegistered()
+    {
+        return view('registered');
     }
 
     // メール送信フォーム表示
