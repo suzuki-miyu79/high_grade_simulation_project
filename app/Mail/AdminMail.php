@@ -15,17 +15,19 @@ class AdminMail extends Mailable
     use Queueable, SerializesModels;
 
     //受け取る変数
-    public $subject;
+    public $name;
     public $message;
+
 
     /**
      * Create a new message instance.
      */
-    public function __construct($subject, $message)
+    public function __construct($name, $message)
     {
         //変数に受け取った値をセット
-        $this->subject = $subject;
+        $this->name = $name;
         $this->message = $message;
+
     }
 
     /**
@@ -47,8 +49,8 @@ class AdminMail extends Mailable
         return new Content(
             view: 'mail.main-message',
             with: [
-                'subject' => $this->subject,
-                'text' => $this->message
+                'main' => $this->message,
+                'name' => $this->name
             ],
         );
     }

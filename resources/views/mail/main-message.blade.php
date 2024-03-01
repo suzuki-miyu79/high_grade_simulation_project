@@ -9,8 +9,9 @@
 </head>
 
 <body>
-    <h1>Subject: {{ $subject }}</h1>
-    <p>Message: {{ $text }}</p>
+    <p class="name">{{ $name }}さん</p><br>
+    <p class="fixed-phrase">いつも「Rese」をご利用いただきまして誠にありがとうございます。</p>
+    <p>{!! $main !!}</p>
 
 </body>
 

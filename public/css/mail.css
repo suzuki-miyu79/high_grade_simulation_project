@@ -1,0 +1,44 @@
+.mail__content-title {
+    margin: 1.5em 0;
+}
+
+.mail__content-form {
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px grey;
+    padding: 3em;
+    margin-bottom: 1.5em;
+    color: #000;
+}
+
+.mail__content__form-recipient {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 2em;
+}
+
+.mail__content__form-recipient label,
+.mail__content__form-recipient-item,
+.mail__content__form-text label {
+    margin-right: 0.5em;
+}
+
+.mail__content__form-text {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2em;
+}
+
+.mail__content__form-text textarea {
+    width: 80%;
+    padding: 1em;
+}
+
+.mail__content__form-button-submit {
+    padding: 0.6em 1.2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #305DFF;
+    color: #fff;
+    cursor: pointer;
+}
