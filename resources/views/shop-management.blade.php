@@ -58,7 +58,7 @@
         </div>
 
         <div class="restaurant-info">
-            <p class="authority-name">店舗代表者</p>
+            <p class="authority-name">店舗管理ページ</p>
             <h2 class="restaurant-info__title">店舗情報</h2>
             <div class="restaurant-info__content">
                 <div class="restaurant-info__create">
