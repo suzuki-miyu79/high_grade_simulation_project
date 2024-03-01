@@ -27,19 +27,25 @@ class MyPageController extends Controller
                 return $reservation;
             });
 
-        // QRコードを生成するための情報を準備
-        $qrCodeData = '';
-        foreach ($orderedReservations as $reservation) {
-            $qrCodeData .= "Restaurant: " . $reservation->restaurant->name . "\n";
-            $qrCodeData .= "User: " . $reservation->user->name . "\n";
-            $qrCodeData .= "Date: " . $reservation->date . "\n";
-            $qrCodeData .= "Time: " . $reservation->formattedTime . "\n";
-            $qrCodeData .= "Number: " . $reservation->number . "\n\n";
-        }
+        // 予約情報があるかどうかを確認
+        if ($orderedReservations->isNotEmpty()) {
+            // QRコードを生成するための情報を準備
+            $qrCodeData = '';
+            foreach ($orderedReservations as $reservation) {
+                $qrCodeData .= "Restaurant: " . $reservation->restaurant->name . "\n";
+                $qrCodeData .= "User: " . $reservation->user->name . "\n";
+                $qrCodeData .= "Date: " . $reservation->date . "\n";
+                $qrCodeData .= "Time: " . $reservation->formattedTime . "\n";
+                $qrCodeData .= "Number: " . $reservation->number . "\n\n";
+            }
 
-        // QRコードを生成してBase64エンコードする
-        $qrCode = QrCode::format('png')->encoding('UTF-8')->size(150)->generate($qrCodeData);
-        $qrCodeBase64 = base64_encode($qrCode);
+            // QRコードを生成してBase64エンコードする
+            $qrCode = QrCode::format('png')->encoding('UTF-8')->size(150)->generate($qrCodeData);
+            $qrCodeBase64 = base64_encode($qrCode);
+        } else {
+            // 予約情報がない場合の処理
+            $qrCodeBase64 = null; // または他のデフォルトの値
+        }
 
         // お気に入り情報を取得
         $favorites = Favorite::where('user_id', $user->id)->get();
