@@ -138,10 +138,16 @@
 
 /* 以下、ユーザー名とお気に入り店舗 */
 
+.favorite-restaurants__top {
+    display: flex;
+    align-items: center;
+    margin: 0.5em 0 2.5em;
+}
+
 .user-name {
     font-size: 2rem;
     font-weight: bold;
-    margin: 0.5em 0 1em 0;
+    margin: 0 1em 0 0;
 }
 
 .favorite-restaurants__title {
