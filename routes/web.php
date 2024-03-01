@@ -9,6 +9,7 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ShopRepresentativeController;
+use App\Http\Controllers\StripeController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\RepresentativeMiddleware;
 
@@ -79,6 +80,8 @@ Route::middleware('auth')->group(function () {
     // 店舗情報更新
     Route::put('/shop-management/update/{id}', [RestaurantController::class, 'update'])->name('restaurant.update');
 
+    // 決済機能
+    Route::post('/charge', [StripeController::class, 'charge'])->name('stripe.charge');
 });
 
 require __DIR__ . '/auth.php';
