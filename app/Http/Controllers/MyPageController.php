@@ -21,7 +21,7 @@ class MyPageController extends Controller
             ->orderBy('date')
             ->orderBy('time')
             ->get()
-            ->map(function ($reservation, $index) {
+            ->map(function ($reservation) {
                 // 予約情報のTimeをフォーマット
                 $reservation->formattedTime = Carbon::createFromFormat('H:i:s', $reservation->time)->format('H:i');
                 return $reservation;

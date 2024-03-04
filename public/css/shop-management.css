@@ -115,6 +115,8 @@
     background-color: #305DFF;
     color: #fff;
     cursor: pointer;
+    margin-top: 0.95em;
+    margin-bottom: 1em;
 }
 
 .restaurant-info__create-inner {
@@ -124,8 +126,12 @@
     padding: 2em;
 }
 
-.restaurant-info__form {
+.restaurant-info__form,
+.restaurant-info__form--image,
+.restaurant-info__form--textarea {
     display: flex;
+    align-items: center;
+    /* justify-content: space-between; */
     margin-bottom: 1em;
 }
 
@@ -133,10 +139,55 @@
     margin: 0;
 }
 
+.restaurant-info__form input,
+.restaurant-info__form--image input,
+.restaurant-info__form select,
+.restaurant-info__form--textarea textarea {
+    border-radius: 5px;
+    padding: 0.5em;
+}
+
+.restaurant-info__form input,
+.restaurant-info__form select {
+    width: 15em;
+}
+
+.input-name {
+    margin-left: 4.2em;
+    border: 1px solid;
+}
+
+.input-image {
+    margin-left: 3.7em;
+}
+
+.select-area {
+    margin-left: 2.9em;
+}
+
+.select-genre {
+    margin-left: 1.7em;
+}
+
+.restaurant-info__form--textarea textarea {
+    width: 70%;
+    margin-left: 4em;
+}
+
+.restaurant-info__form--button-submit {
+    padding: 0.6em 1.2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #305DFF;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 0.95em;
+    margin-bottom: 1em;
+}
+
 @media screen and (max-width: 768px) {
     .reservation-info {
         width: 45%;
-        margin-top: 5.4em;
     }
 
     .reservation-info__content-top__order {

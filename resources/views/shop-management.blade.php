@@ -45,7 +45,8 @@
                             </tr>
                             <tr class="reservation-info__data">
                                 <th class="reservation-info__data-column">Time</th>
-                                <td class="reservation-info__data-data-entry">{{ $reservation->time }}</td>
+                                <td class="reservation-info__data-data-entry">
+                                    {{ \Carbon\Carbon::parse($reservation->time)->format('H:i') }}</td>
                             </tr>
                             <tr class="reservation-info__data">
                                 <th class="reservation-info__data-column">Number</th>
@@ -65,7 +66,7 @@
                     <button id="new-create-button">新規作成</button>
                 </div>
                 <div class="restaurant-info__create-inner">
-                    @if (!is_null($selectedRestaurant))
+                    @if ($selectedRestaurant)
                         <form id="restaurant_form" action="{{ route('restaurant.update', $selectedRestaurant->id) }}"
                             method="post" enctype="multipart/form-data">
                             @csrf
@@ -74,30 +75,30 @@
                                 value="{{ $selectedRestaurant->id ?? '' }}">
                             <div class="restaurant-info__form">
                                 <label>店名：</label>
-                                <input type="text" id="name" name="name"
+                                <input class="input-name" type="text" id="name" name="name"
                                     value="{{ $selectedRestaurant->name ?? '' }}">
                             </div>
-                            <div class="restaurant-info__form">
+                            <div class="restaurant-info__form--image">
                                 <label>画像：</label>
-                                <input type="file" id="image" name="image">
+                                <input class="input-image" type="file" id="image" name="image">
                             </div>
                             <div class="restaurant-info__form">
                                 <label>エリア：</label>
-                                <select id="area" name="area">
+                                <select class="select-area" id="area" name="area">
                                     @foreach ($areas as $area)
                                         <option value="{{ $area->id }}"
                                             {{ $currentArea && $currentArea->id == $area->id ? 'selected' : '' }}>
-                                            {{ $area->name }}</option>
+                                            {{ $area->prefectures_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="restaurant-info__form">
                                 <label>ジャンル：</label>
-                                <select id="genre" name="genre">
+                                <select class="select-genre" id="genre" name="genre">
                                     @foreach ($genres as $genre)
                                         <option value="{{ $genre->id }}"
                                             {{ $currentGenre && $currentGenre->id == $genre->id ? 'selected' : '' }}>
-                                            {{ $genre->name }}</option>
+                                            {{ $genre->genre_name }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -110,8 +111,6 @@
                                     class="restaurant-info__form--button-submit">登録</button>
                             </div>
                         </form>
-                    @else
-                        <p>店舗を選択してください。</p>
                     @endif
                 </div>
             </div>

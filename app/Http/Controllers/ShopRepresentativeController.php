@@ -45,6 +45,9 @@ class ShopRepresentativeController extends Controller
         if ($selectedRestaurantId) {
             $selectedRestaurant = Restaurant::findOrFail($selectedRestaurantId);
             $reservations = $selectedRestaurant->reservations;
+            $reservations = $reservations->sortBy(function ($reservation) {
+                return Carbon::parse($reservation->date . ' ' . $reservation->time);
+            });
 
             // 現在のエリアとジャンルを取得
             $currentArea = $selectedRestaurant->area;
