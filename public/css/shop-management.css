@@ -31,8 +31,6 @@
 }
 
 .reservation-info__content {
-    position: relative;
-    overflow: hidden;
     background-color: #305DFF;
     border-radius: 5px;
     box-shadow: 2px 2px 5px grey;
@@ -103,19 +101,19 @@
 }
 
 .authority-name {
-    margin: 0 0 1.15em 0;
+    margin: 0 0 1.1em 0;
     font-size: 2rem;
     font-weight: bold;
 }
 
 .restaurant-info__create button {
-    padding: 0.6em 1.2em;
+    padding: 0.8em 2em;
     border: none;
     border-radius: 5px;
     background-color: #305DFF;
     color: #fff;
     cursor: pointer;
-    margin-top: 0.95em;
+    margin-top: 0.9em;
     margin-bottom: 1em;
 }
 
@@ -131,7 +129,6 @@
 .restaurant-info__form--textarea {
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
     margin-bottom: 1em;
 }
 
@@ -175,7 +172,7 @@
 }
 
 .restaurant-info__form--button-submit {
-    padding: 0.6em 1.2em;
+    padding: 0.8em 2em;
     border: none;
     border-radius: 5px;
     background-color: #305DFF;
@@ -187,15 +184,60 @@
 
 @media screen and (max-width: 768px) {
     .reservation-info {
-        width: 45%;
+        width: 42%;
     }
 
     .reservation-info__content-top__order {
         margin-left: 2em;
     }
 
+    .restaurant-info__select select {
+        padding: 0.2em;
+        width: 9em;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .reservation-info__content {
+        background-color: #305DFF;
+        border-radius: 5px;
+        box-shadow: 2px 2px 5px grey;
+        padding: 0.5em 1.5em;
+        margin-bottom: 1.5em;
+        color: #fff;
+    }
+
     .reservation-info__data-column {
         text-align: left;
         padding: 0.6em 2.5em 0.6em 0em;
+    }
+
+    .input-name {
+        margin-left: 0;
+        border: 1px solid;
+    }
+
+    .restaurant-info {
+        width: 50%;
+    }
+
+    .restaurant-info__form,
+    .restaurant-info__form--image,
+    .restaurant-info__form--textarea {
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: 1em;
+    }
+
+    .input-image,
+    .select-area,
+    .select-genre {
+        margin-left: 0;
+    }
+
+    .restaurant-info__form--textarea textarea {
+        width: 100%;
+        margin-left: 0;
     }
 }
