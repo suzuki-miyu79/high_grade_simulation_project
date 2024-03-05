@@ -17,6 +17,6 @@
         <li><a href="/mailform')">MailForm</a></li>
     @elseif(auth()->user()->role === 'representative')
         <li><a href="/shop-management">ShopManagement</a></li>
-        <li><a href="/mailform">MailForm</a></li>
+        <li><a href="/mailform">Mailform</a></li>
     @endif
 @endsection
