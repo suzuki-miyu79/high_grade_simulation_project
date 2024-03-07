@@ -63,12 +63,55 @@
             <h2 class="restaurant-info__title">店舗情報</h2>
             <div class="restaurant-info__content">
                 <div class="restaurant-info__create">
-                    <button id="new-create-button">新規作成</button>
+                    <button id="new-create-button" onclick="showNewForm()">新規作成</button>
                 </div>
-                <div class="restaurant-info__create-inner">
+
+                <div class="restaurant-info__create-inner" id="new-form" style="display: none;">
+                    <form id="new_restaurant_form" action="{{ route('restaurant.store') }}" method="post"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <div class="restaurant-info__form">
+                            <label>店名：</label>
+                            <input class="input-name" type="text" id="name" name="name" value="">
+                        </div>
+                        <div class="restaurant-info__form--image">
+                            <label>画像：</label>
+                            <input class="input-image" type="file" id="image" name="image">
+                        </div>
+                        <div class="restaurant-info__form">
+                            <label>エリア：</label>
+                            <select class="select-area" id="area" name="area">
+                                @foreach ($areas as $area)
+                                    <option value="">
+                                        {{ $area->prefectures_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="restaurant-info__form">
+                            <label>ジャンル：</label>
+                            <select class="select-genre" id="genre" name="genre">
+                                @foreach ($genres as $genre)
+                                    <option value="">
+                                        {{ $genre->genre_name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="restaurant-info__form--textarea">
+                            <label>説明：</label>
+                            <textarea id="overview" name="overview" cols="30" rows="10"></textarea>
+                        </div>
+                        <div class="restaurant-info__form--button">
+                            <button type="submit" id="register-button"
+                                class="restaurant-info__form--button-submit">登録</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="restaurant-info__create-inner" id="update-form">
                     @if ($selectedRestaurant)
-                        <form id="restaurant_form" action="{{ route('restaurant.update', $selectedRestaurant->id) }}"
-                            method="post" enctype="multipart/form-data">
+                        <form id="update_restaurant_form"
+                            action="{{ route('restaurant.update', $selectedRestaurant->id) }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
                             <input type="hidden" id="restaurant_id" name="restaurant_id"
@@ -107,8 +150,8 @@
                                 <textarea id="overview" name="overview" cols="30" rows="10">{{ $selectedRestaurant->overview ?? '' }}</textarea>
                             </div>
                             <div class="restaurant-info__form--button">
-                                <button type="submit" id="register-button"
-                                    class="restaurant-info__form--button-submit">登録</button>
+                                <button type="submit" id="update-button"
+                                    class="restaurant-info__form--button-submit">更新</button>
                             </div>
                         </form>
                     @endif
@@ -118,14 +161,9 @@
     </div>
     <script>
         // 新規作成ボタンがクリックされたときの処理
-        document.getElementById('new-create-button').addEventListener('click', function() {
-            // フォームの内容をクリアする処理
-            document.getElementById('restaurant_id').value = '';
-            document.getElementById('name').value = '';
-            document.getElementById('image').value = '';
-            document.getElementById('area').selectedIndex = 0;
-            document.getElementById('genre').selectedIndex = 0;
-            document.getElementById('overview').value = '';
-        });
+        function showNewForm() {
+            document.getElementById('new-form').style.display = 'block';
+            document.getElementById('update-form').style.display = 'none';
+        }
     </script>
 @endsection
