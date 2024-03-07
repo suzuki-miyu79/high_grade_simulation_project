@@ -12,12 +12,16 @@
                 <form method="GET" action="{{ route('shop-management.index') }}">
                     @csrf
                     <select name="selected_restaurant_id" id="selected_restaurant_id" onchange="this.form.submit()">
-                        @foreach ($managedRestaurants as $restaurant)
-                            <option value="{{ $restaurant->id }}"
-                                {{ $restaurant->id == $selectedRestaurantId ? 'selected' : '' }}>
-                                {{ $restaurant->name }}
-                            </option>
-                        @endforeach
+                        @if ($managedRestaurants->isEmpty())
+                            <option value="" disabled selected>店舗情報なし</option>
+                        @else
+                            @foreach ($managedRestaurants as $restaurant)
+                                <option value="{{ $restaurant->id }}"
+                                    {{ $restaurant->id == $selectedRestaurantId ? 'selected' : '' }}>
+                                    {{ $restaurant->name }}
+                                </option>
+                            @endforeach
+                        @endif
                     </select>
                 </form>
             </div>
