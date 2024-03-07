@@ -14,6 +14,9 @@ class RestaurantController extends Controller
     // 店舗情報新規登録
     public function store(Request $request)
     {
+        // ユーザーIDを取得
+        $userId = auth()->id();
+
         // 画像のアップロード処理
         if ($request->hasFile('image')) {
             // 画像を保存してパスを取得
@@ -26,6 +29,7 @@ class RestaurantController extends Controller
         $restaurant->area_id = $request->input('area');
         $restaurant->genre_id = $request->input('genre');
         $restaurant->overview = $request->input('overview');
+        $restaurant->user_id = $userId;
         // 画像がアップロードされていれば、パスを保存
         if (isset($imagePath)) {
             $restaurant->image = $imagePath;
