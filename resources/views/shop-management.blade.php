@@ -65,7 +65,7 @@
                 <div class="restaurant-info__create">
                     <button id="new-create-button" onclick="showNewForm()">新規作成</button>
                 </div>
-
+                {{-- 新規作成ボタンクリック時に表示する新規登録フォーム --}}
                 <div class="restaurant-info__create-inner" id="new-form" style="display: none;">
                     <form id="new_restaurant_form" action="{{ route('restaurant.store') }}" method="post"
                         enctype="multipart/form-data">
@@ -81,6 +81,7 @@
                         <div class="restaurant-info__form">
                             <label>エリア：</label>
                             <select class="select-area" id="area" name="area">
+                                <option value="">選択してください</option>
                                 @foreach ($areas as $area)
                                     <option value="">
                                         {{ $area->prefectures_name }}</option>
@@ -90,6 +91,7 @@
                         <div class="restaurant-info__form">
                             <label>ジャンル：</label>
                             <select class="select-genre" id="genre" name="genre">
+                                <option value="">選択してください</option>
                                 @foreach ($genres as $genre)
                                     <option value="">
                                         {{ $genre->genre_name }}</option>
@@ -106,7 +108,7 @@
                         </div>
                     </form>
                 </div>
-
+                {{-- 管理店舗が存在する場合に表示する更新フォーム --}}
                 <div class="restaurant-info__create-inner" id="update-form">
                     @if ($selectedRestaurant)
                         <form id="update_restaurant_form"
@@ -152,6 +154,48 @@
                             <div class="restaurant-info__form--button">
                                 <button type="submit" id="update-button"
                                     class="restaurant-info__form--button-submit">更新</button>
+                            </div>
+                        </form>
+                    @else
+                        {{-- 管理店舗が存在しない場合に表示する登録フォーム --}}
+                        <form id="new_restaurant_form" action="{{ route('restaurant.store') }}" method="post"
+                            enctype="multipart/form-data">
+                            @csrf
+                            <div class="restaurant-info__form">
+                                <label>店名：</label>
+                                <input class="input-name" type="text" id="name" name="name" value="">
+                            </div>
+                            <div class="restaurant-info__form--image">
+                                <label>画像：</label>
+                                <input class="input-image" type="file" id="image" name="image">
+                            </div>
+                            <div class="restaurant-info__form">
+                                <label>エリア：</label>
+                                <select class="select-area" id="area" name="area">
+                                    <option value="">選択してください</option>
+                                    @foreach ($areas as $area)
+                                        <option value="">
+                                            {{ $area->prefectures_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="restaurant-info__form">
+                                <label>ジャンル：</label>
+                                <select class="select-genre" id="genre" name="genre">
+                                    <option value="">選択してください</option>
+                                    @foreach ($genres as $genre)
+                                        <option value="">
+                                            {{ $genre->genre_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="restaurant-info__form--textarea">
+                                <label>説明：</label>
+                                <textarea id="overview" name="overview" cols="30" rows="10"></textarea>
+                            </div>
+                            <div class="restaurant-info__form--button">
+                                <button type="submit" id="register-button"
+                                    class="restaurant-info__form--button-submit">登録</button>
                             </div>
                         </form>
                     @endif
