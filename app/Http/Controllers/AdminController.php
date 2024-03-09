@@ -85,7 +85,7 @@ class AdminController extends Controller
         }
 
         // メール送信成功時の処理
-        return redirect()->back()->with('success', 'メールが正常に送信されました。');
+        return redirect()->back()->with('success', 'メールが送信されました。');
     }
 }
 

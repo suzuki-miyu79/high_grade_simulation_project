@@ -12,6 +12,17 @@
 
 <body>
     <header>
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
         <div class="nav">
             <button class="nav__icon" id="openMenuButton" onclick="openMenu()">
                 <div class="nav__icon-line">

@@ -23,7 +23,7 @@ class ReservationController extends Controller
             'number' => $request->input('reservation_number'),
         ]);
 
-        return redirect()->route('reserved.show', ['restaurant_id' => $restaurant_id]);
+        return redirect()->route('reserved.show');
     }
 
     // 予約完了ページ表示
@@ -39,7 +39,7 @@ class ReservationController extends Controller
 
         $reservation->delete();
 
-        return redirect()->route('mypage')->with('success', 'Reservation canceled successfully.');
+        return redirect()->route('mypage')->with('success', '予約の取り消しが完了しました。');
     }
 
     // 予約内容変更機能
@@ -54,6 +54,6 @@ class ReservationController extends Controller
             'number' => $request->input('reservation_number'),
         ]);
 
-        return redirect()->route('mypage')->with('success', 'Reservation updated successfully.');
+        return redirect()->route('mypage')->with('success', '予約内容が変更されました。');
     }
 }

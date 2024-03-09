@@ -7,6 +7,14 @@
 @section('content')
     <div class="mypage__content">
         <div class="reservation-status">
+            {{-- 決済ボタン --}}
+            <form action="{{ route('stripe.charge') }}" method="POST">
+                @csrf
+                <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ env('STRIPE_KEY') }}"
+                    data-amount="1000" data-name="お支払い画面" data-label="決済ボタン" data-description="お食事代"
+                    data-image="https://stripe.com/img/documentation/checkout/marketplace.png" data-locale="auto" data-currency="JPY">
+                </script>
+            </form>
             <h2 class="reservation-status__title">予約状況</h2>
             @foreach ($orderedReservations as $reservation)
                 <div class="reservation-status__content">
@@ -171,14 +179,6 @@
         <div class="favorite-restaurants">
             <div class="favorite-restaurants__top">
                 <p class="user-name">{{ Auth::user()->name }}さん</p>
-                {{-- 決済ボタン --}}
-                <form action="{{ route('stripe.charge') }}" method="POST">
-                    @csrf
-                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ env('STRIPE_KEY') }}"
-                        data-amount="1000" data-name="お支払い画面" data-label="決済をする" data-description="現在はデモ画面です"
-                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png" data-locale="auto" data-currency="JPY">
-                    </script>
-                </form>
             </div>
             <h2 class="favorite-restaurants__title">お気に入り店舗</h2>
             <div class="favorite-restaurants__content">

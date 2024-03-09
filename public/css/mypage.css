@@ -5,7 +5,11 @@
 
 .reservation-status {
     width: 35%;
-    margin-top: 6em;
+    margin-top: 1em;
+}
+
+.reservation-status form {
+    margin-bottom: 3.1em;
 }
 
 .reservation-status__title {
@@ -139,15 +143,13 @@
 /* 以下、ユーザー名とお気に入り店舗 */
 
 .favorite-restaurants__top {
-    display: flex;
-    align-items: center;
     margin: 0.5em 0 2.5em;
 }
 
 .user-name {
     font-size: 2rem;
     font-weight: bold;
-    margin: 0 1em 0 0;
+    margin: 0;
 }
 
 .favorite-restaurants__title {
@@ -241,7 +243,7 @@
 @media screen and (max-width: 768px) {
     .reservation-status {
         width: 45%;
-        margin-top: 5.4em;
+        margin-top: 1em;
     }
 
     .reservation-status__content-top__order {
