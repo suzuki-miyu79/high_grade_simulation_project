@@ -4,7 +4,7 @@ body {
 }
 
 .alert-success {
-    padding: 1em 2em;
+    padding: 2em;
     border-radius: 5px;
     font-weight: bold;
     color: #155724;
@@ -17,9 +17,10 @@ body {
 }
 
 .alert-danger {
-    padding: 1em 2em;
+    padding: 2em;
     border-radius: 5px;
-    color: #721c24;
+    font-weight: bold;
+    color: #76000c;
     background-color: #f8d7da;
     border-color: #f5c6cb;
     position: fixed;
@@ -98,7 +99,8 @@ body {
     .alert-danger {
         padding: 0.8em 2em;
         border-radius: 5px;
-        color: #721c24;
+        font-weight: bold;
+        color: #76000c;
         background-color: #f8d7da;
         border-color: #f5c6cb;
         position: fixed;

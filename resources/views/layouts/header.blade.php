@@ -22,6 +22,12 @@
                 {{ session('error') }}
             </div>
         @endif
+        <!-- 代表的なエラーメッセージの表示 -->
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                {{ $errors->first() }}
+            </div>
+        @endif
 
         <div class="nav">
             <button class="nav__icon" id="openMenuButton" onclick="openMenu()">

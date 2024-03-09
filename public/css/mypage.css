@@ -92,12 +92,6 @@
     margin-bottom: 1em;
 }
 
-.reservation__form span,
-.alert span {
-    display: block;
-    color: red;
-}
-
 .reservation__form input,
 .reservation__form select,
 .evaluation select,

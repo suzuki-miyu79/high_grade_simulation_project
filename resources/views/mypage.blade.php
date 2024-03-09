@@ -32,13 +32,6 @@
                         </div>
                     </div>
 
-                    <!-- 代表的なエラーメッセージの表示 -->
-                    @if ($errors->any())
-                        <div class="alert">
-                            <span>{{ $errors->first() }}</span>
-                        </div>
-                    @endif
-
                     <div class="reservation-status__table">
                         <table class="reservation-status__inner">
                             <tr class="reservation-status__info">
@@ -59,7 +52,7 @@
                             </tr>
                             <tr>
                                 <td colspan="3">
-                                    <img src="data:image/png;base64,{{ $qrCodeBase64 }}" alt="QR Code">
+                                    <img src="data:image/png;base64,{{ $reservation->qrCodeBase64 }}" alt="QR Code">
                                 </td>
                             </tr>
                         </table>
@@ -95,9 +88,6 @@
                                 {{-- 初期値を予約情報から取得 --}}
                                 <input type="date" id="reservation_date" name="reservation_date"
                                     value="{{ old('reservation_date', $reservation->date) }}">
-                                @error('reservation_date')
-                                    <span class="error">{{ $message }}</span>
-                                @enderror
                             </div>
 
                             {{-- 予約時間選択 --}}
@@ -120,9 +110,6 @@
                                         </option>
                                     @endfor
                                 </select>
-                                @error('reservation_time')
-                                    <span class="error">{{ $message }}</span>
-                                @enderror
                             </div>
 
                             {{-- 予約人数選択 --}}
@@ -135,9 +122,6 @@
                                             {{ $n }}人</option>
                                     @endfor
                                 </select>
-                                @error('reservation_number')
-                                    <span class="error">{{ $message }}</span>
-                                @enderror
                             </div>
                             <div class="reservation-status__modify-button">
                                 <button class="reservation-status__modify-button-submit"
