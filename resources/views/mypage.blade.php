@@ -11,7 +11,7 @@
             <form action="{{ route('stripe.charge') }}" method="POST">
                 @csrf
                 <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="{{ env('STRIPE_KEY') }}"
-                    data-amount="1000" data-name="お支払い画面" data-label="決済ボタン" data-description="お食事代"
+                    data-amount="1000" data-name="お支払い画面" data-label="カードで支払う" data-description="お食事代"
                     data-image="https://stripe.com/img/documentation/checkout/marketplace.png" data-locale="auto" data-currency="JPY">
                 </script>
             </form>
@@ -138,7 +138,8 @@
                             <input type="hidden" name="restaurant_id" value="{{ $reservation->restaurant->id }}">
                             <div class="evaluation">
                                 <p>お店の満足度</p>
-                                <select name="rating">
+                                <select name="rating" required>
+                                    <option value="">選択してください</option>
                                     <option value="1">1</option>
                                     <option value="2">2</option>
                                     <option value="3">3</option>
@@ -148,7 +149,7 @@
                             </div>
                             <div class="comment">
                                 <p>コメント</p>
-                                <textarea name="comment" rows="4"></textarea>
+                                <textarea name="comment" rows="4" required></textarea>
                             </div>
                             <div class="reservation-status__review-button">
                                 <button class="reservation-status__review-button-submit" type="submit">レビューを送信する</button>
