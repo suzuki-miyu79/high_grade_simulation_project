@@ -14,7 +14,7 @@
     <li><a href="/mypage">Mypage</a></li>
     @if (auth()->user()->role === 'admin')
         <li><a href="/admin">AdminPage</a></li>
-        <li><a href="/mailform')">MailForm</a></li>
+        <li><a href="/mailform')">Mailform</a></li>
     @elseif(auth()->user()->role === 'representative')
         <li><a href="/shop-management">ShopManagement</a></li>
         <li><a href="/mailform">Mailform</a></li>
