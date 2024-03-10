@@ -94,6 +94,9 @@ Route::middleware('auth')->group(function () {
     // 決済機能
     Route::post('/charge', [StripeController::class, 'charge'])->name('stripe.charge');
 
+    // 決済完了ページ表示
+    Route::get('/settled', [StripeController::class, 'showSettled'])->name('settled.show');
+
     // リマインド機能
     Route::post('/send-mail', [AdminController::class, 'sendMail'])->name('send.mail');
 });

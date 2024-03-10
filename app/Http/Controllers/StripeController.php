@@ -8,6 +8,14 @@ use Stripe\Charge;
 
 class StripeController extends Controller
 {
+
+    // 決済完了ページ表示
+    public function showSettled()
+    {
+        return view('settled');
+    }
+
+    // 決済ページ
     public function charge(Request $request)
     {
         Stripe::setApiKey(env('STRIPE_SECRET'));//シークレットキー
@@ -19,6 +27,6 @@ class StripeController extends Controller
                 'source' => request()->stripeToken,
             )
         );
-        return back();
+        return redirect()->route('settled.show');
     }
 }
