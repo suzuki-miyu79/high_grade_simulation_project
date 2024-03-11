@@ -55,6 +55,6 @@ class MyPageController extends Controller
             return $favorite->restaurant;
         });
 
-        return view('mypage', compact('user', 'orderedReservations', 'restaurants', 'reservation'));
+        return view('mypage', compact('user', 'orderedReservations', 'restaurants'));
     }
 }
