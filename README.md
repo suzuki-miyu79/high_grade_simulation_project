@@ -2,8 +2,10 @@
 - 飲食店予約システム
 ![Rese-top](https://github.com/suzuki-miyu79/high_grade_simulation_project/assets/144597636/95f05a93-885b-44dd-aaa8-7ae9be5a0e95)
 
+
 ## 作成した目的
 - 機能や画面がシンプルで使いやすい飲食店予約サービスを提供するため。
+
 
 ## アプリケーションURL
 開発環境：http://localhost/
@@ -18,6 +20,7 @@
 [店舗管理者アカウント]
 - メールアドレス：representative@abc.com
 - パスワード：12345678
+
 
 ## 機能一覧
 - 認証
@@ -57,6 +60,7 @@
 - ストレージ保存機能
 - レスポンシブデザイン（768px）
 
+
 ## 使用技術（実行環境）
 ### プログラミング言語
 - フロントエンド：HTML/CSS
@@ -69,11 +73,14 @@
 ### データベース
 - MySQL 8.0
 
+
 ## テーブル設計
 ![テーブル設計](https://github.com/suzuki-miyu79/high_grade_simulation_project/assets/144597636/d8be949f-d4d5-46a6-b414-0d7a01b4c359)
 
+
 ## ER図
 ![er_high_grade_simulation_project](https://github.com/suzuki-miyu79/high_grade_simulation_project/assets/144597636/ffa9993a-ca6c-41d3-805d-84185c413efa)
+
 
 # 環境構築
 ### 1．Laravel Sailをインストール
