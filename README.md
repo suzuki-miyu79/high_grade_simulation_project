@@ -90,7 +90,7 @@
 
 ### 3．環境変数の変更
 - .envの環境変数を変更します。
-    - メールドライバやアドレスの設定
+    - メール設定
   ```
   MAIL_MAILER=smtp
   MAIL_HOST=smtp.gmail.com
@@ -101,7 +101,7 @@
   MAIL_FROM_ADDRESS=<送信元gmailのアドレス>
   MAIL_FROM_NAME="${APP_NAME}"
   ```
-    - Stripeの設定
+    - Stripe設定
   ```
   STRIPE_KEY= # 公開可能キーを入力
   STRIPE_SECRET= # シークレットキーを入力
