@@ -91,7 +91,7 @@
 ### 3．環境変数の変更
 - .envの環境変数を変更します。
     - メールドライバやアドレスの設定
-```
+  ```
   MAIL_MAILER=smtp
   MAIL_HOST=smtp.gmail.com
   MAIL_PORT=465
@@ -100,14 +100,12 @@
   MAIL_ENCRYPTION=ssl
   MAIL_FROM_ADDRESS=<送信元gmailのアドレス>
   MAIL_FROM_NAME="${APP_NAME}"
-```
-
+  ```
     - Stripeの設定
-    
-```
-STRIPE_KEY= # 公開可能キーを入力
-STRIPE_SECRET= # シークレットキーを入力
-```
+  ```
+  STRIPE_KEY= # 公開可能キーを入力
+  STRIPE_SECRET= # シークレットキーを入力
+  ```
 ### 4．phpMyAdminを追加する
 - 次の設定をdocker-compose.ymlに追加します。
 ```
