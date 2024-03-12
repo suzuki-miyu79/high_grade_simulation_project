@@ -64,13 +64,21 @@
 ### 3．環境変数の変更
 - .env.exampleをコピーして.envを作成し、環境変数を変更します。
 - メールドライバやアドレスの設定は以下のように変更してください。
+
 MAIL_MAILER=smtp
+
 MAIL_HOST=smtp.gmail.com
+
 MAIL_PORT=465
+
 MAIL_USERNAME=<送信元gmailのアドレス>   #gmailの場合、USERNAMEはFROM_ADDRESSと同じ
+
 MAIL_PASSWORD=<アプリパスワード>　#gmailで二段階認証とアプリパスワードの発行を行ってください
+
 MAIL_ENCRYPTION=ssl
+
 MAIL_FROM_ADDRESS=<送信元gmailのアドレス>
+
 MAIL_FROM_NAME="${APP_NAME}"
 
 ### 4．phpMyAdminを追加する
