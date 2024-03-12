@@ -58,8 +58,8 @@
 　./vendor/bin/sail up
 
 ### 3．環境変数の変更
-1..env.exampleをコピーして.envを作成し、環境変数を変更します。
-2.メールドライバやアドレスの設定は以下のように変更してください。
+- .env.exampleをコピーして.envを作成し、環境変数を変更します。
+    - メールドライバやアドレスの設定は以下のように変更してください。
 ```
   MAIL_MAILER=smtp
 
@@ -79,9 +79,8 @@
 ```
 ### 4．phpMyAdminを追加する
 - 次の設定をdocker-compose.ymlに追加します。
-
+```
    phpmyadmin:
-  
         image: phpmyadmin/phpmyadmin
         links:
             - mysql:mysql
@@ -93,7 +92,7 @@
             PMA_HOST: mysql
         networks:
             - sail
-
+```
 ### 5．Laravel Breeze(ユーザー認証パッケージ)のインストール
 - larabel/breezeのパッケージを追加します。
 
