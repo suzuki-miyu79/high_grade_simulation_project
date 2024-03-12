@@ -20,11 +20,42 @@
 - パスワード：12345678
 
 ## 機能一覧
-- 会員登録、ログイン、ログアウト機能
-- 打刻機能（勤務開始、勤務終了、休憩開始、休憩終了）
-- 検索機能（ユーザー名のキーワード検索）
-- 日付別勤怠情報取得、ユーザー別勤怠情報取得機能
-- ページネーション機能
+- 認証
+    - 会員登録
+    - ログイン
+    - ログアウト
+    - バリデーション
+    - メール認証
+- 飲食店情報取得機能
+    - 飲食店一覧取得
+    - 飲食店詳細取得
+- お気に入り機能
+    - お気に入り追加
+    - お気に入り削除
+- 予約機能
+    - 予約情報追加
+    - 予約情報削除
+    - 予約情報変更
+- QRコード発行機能
+- 評価機能
+- 決済機能
+- ユーザー情報取得機能
+    - ユーザーお気に入り一覧取得
+    - ユーザー予約情報取得
+- 検索機能
+    - エリア検索
+    - ジャンル検索
+    - 店名検索
+- 管理機能（管理者）
+    - 店舗代表者作成
+- 管理機能（店舗代表者）
+    - 店舗情報作成
+    - 店舗情報変更
+    - 予約情報確認
+- メール送信機能
+- リマインダー機能
+- ストレージ保存機能
+- レスポンシブデザイン（768px）
 
 ## 使用技術（実行環境）
 ### プログラミング言語
@@ -58,8 +89,8 @@
 　./vendor/bin/sail up
 
 ### 3．環境変数の変更
-- .env.exampleをコピーして.envを作成し、環境変数を変更します。
-    - メールドライバやアドレスの設定は以下のように変更してください。
+- .envの環境変数を変更します。
+    - メールドライバやアドレスの設定
 ```
   MAIL_MAILER=smtp
   MAIL_HOST=smtp.gmail.com
@@ -69,6 +100,11 @@
   MAIL_ENCRYPTION=ssl
   MAIL_FROM_ADDRESS=<送信元gmailのアドレス>
   MAIL_FROM_NAME="${APP_NAME}"
+```
+    - Stripeの設定
+```
+STRIPE_KEY= # 公開可能キーを入力
+STRIPE_SECRET= # シークレットキーを入力
 ```
 ### 4．phpMyAdminを追加する
 - 次の設定をdocker-compose.ymlに追加します。
@@ -103,10 +139,8 @@
 ### 7．ダミーデータの作成
 - シーディングでダミーデータを作成します。
 
-  ./vendor/bin/sail artisan db:seed --class=AreaSeeder
+  ./vendor/bin/sail artisan db:seed
 
-  ./vendor/bin/sail artisan db:seed --class=GenreSeeder
-
-  ./vendor/bin/sail artisan db:seed --class=UserSeeder
-
-  ./vendor/bin/sail artisan db:seed --class=RestaurantSeeder
+### 8．リマインダー機能の確認
+- スケジュールに設定している時間にリマインダー送信が実行されることを、以下のコマンドで確認できます。（ローカル環境）
+  ./vendor/bin/sail artisan schedule:work
