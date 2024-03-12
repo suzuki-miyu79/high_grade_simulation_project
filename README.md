@@ -39,10 +39,10 @@
 - MySQL 8.0
 
 ## テーブル設計
-![table_image](https://github.com/suzuki-miyu79/basic_simulation_project/assets/144597636/1bb54bc1-b7fc-44b1-a562-3df0f91da80e)
+![テーブル設計](https://github.com/suzuki-miyu79/high_grade_simulation_project/assets/144597636/d8be949f-d4d5-46a6-b414-0d7a01b4c359)
 
 ## ER図
-![er](https://github.com/suzuki-miyu79/basic_simulation_project/assets/144597636/97afd063-8e80-4740-8a47-4a45584774e3)
+![er_high_grade_simulation_project](https://github.com/suzuki-miyu79/high_grade_simulation_project/assets/144597636/ffa9993a-ca6c-41d3-805d-84185c413efa)
 
 # 環境構築
 ### 1．Laravel Sailをインストール
