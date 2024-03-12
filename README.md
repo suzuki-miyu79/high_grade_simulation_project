@@ -104,7 +104,7 @@
 
     - Stripeの設定
     
-    ```
+```
 STRIPE_KEY= # 公開可能キーを入力
 STRIPE_SECRET= # シークレットキーを入力
 ```
