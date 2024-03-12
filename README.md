@@ -101,8 +101,10 @@
   MAIL_FROM_ADDRESS=<送信元gmailのアドレス>
   MAIL_FROM_NAME="${APP_NAME}"
 ```
+
     - Stripeの設定
-```
+    
+    ```
 STRIPE_KEY= # 公開可能キーを入力
 STRIPE_SECRET= # シークレットキーを入力
 ```
