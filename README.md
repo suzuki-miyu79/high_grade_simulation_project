@@ -58,9 +58,9 @@
 　./vendor/bin/sail up
 
 ### 3．環境変数の変更
-- .env.exampleをコピーして.envを作成し、環境変数を変更します。
-- メールドライバやアドレスの設定は以下のように変更してください。
-
+1..env.exampleをコピーして.envを作成し、環境変数を変更します。
+2.メールドライバやアドレスの設定は以下のように変更してください。
+```
   MAIL_MAILER=smtp
 
   MAIL_HOST=smtp.gmail.com
@@ -76,7 +76,7 @@
   MAIL_FROM_ADDRESS=<送信元gmailのアドレス>
 
   MAIL_FROM_NAME="${APP_NAME}"
-
+```
 ### 4．phpMyAdminを追加する
 - 次の設定をdocker-compose.ymlに追加します。
 
