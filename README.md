@@ -79,14 +79,14 @@
 ### 1．Laravel Sailをインストール
 - Laravel sailをインストールするディレクトリに移動し、Laravel sailをインストールします。
   
-　curl -s "https://laravel.build/high_grade_simulation_project" | bash
+  curl -s "https://laravel.build/high_grade_simulation_project" | bash
 
 ### 2．Laravel sailを起動する
 - 「high_grade_simulation_project」ディレクトリへ移動し、Laravel sailを起動するコマンドを実行します。
   
-　cd high_grade_simulation_project
+  cd high_grade_simulation_project
  
-　./vendor/bin/sail up
+  ./vendor/bin/sail up
 
 ### 3．環境変数の変更
 - .envの環境変数を変更します。
