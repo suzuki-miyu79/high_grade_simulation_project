@@ -111,4 +111,10 @@ MAIL_FROM_NAME="${APP_NAME}"
 ### 7．ダミーデータの作成
 - シーディングでダミーデータを作成します。
 
-  ./vendor/bin/sail artisan db:seed
+　./vendor/bin/sail artisan db:seed --class=AreaSeeder
+
+　./vendor/bin/sail artisan db:seed --class=GenreSeeder
+
+　./vendor/bin/sail artisan db:seed --class=UserSeeder
+
+　./vendor/bin/sail artisan db:seed --class=RestaurantSeeder
