@@ -1,6 +1,6 @@
 # Rese（リーズ）
 - 飲食店予約システム
-![Atte_top_image](https://github.com/suzuki-miyu79/basic_simulation_project/assets/144597636/c47a8d01-5c8d-4edf-81d3-658ffbcc52e9)
+![Rese-top](https://github.com/suzuki-miyu79/high_grade_simulation_project/assets/144597636/95f05a93-885b-44dd-aaa8-7ae9be5a0e95)
 
 ## 作成した目的
 - 機能や画面がシンプルで使いやすい飲食店予約サービスを提供するため。
