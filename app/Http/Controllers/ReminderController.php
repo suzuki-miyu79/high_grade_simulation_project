@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Reservation;
-use App\Mail\ReminderMail;
-use Illuminate\Support\Facades\Mail;
 use Carbon\Carbon;
 use App\Jobs\ReminderMailJob;
 

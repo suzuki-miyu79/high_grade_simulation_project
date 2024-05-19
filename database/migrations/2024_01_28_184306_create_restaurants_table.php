@@ -18,7 +18,8 @@ return new class extends Migration {
             $table->string('name', 191);
             $table->text('overview');
             $table->string('image', 255);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent()->nullable();
+            $table->timestamp('updated_at')->useCurrent()->nullable();
         });
     }
 

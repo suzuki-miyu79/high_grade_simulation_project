@@ -17,7 +17,8 @@ return new class extends Migration {
             $table->date('date');
             $table->time('time');
             $table->integer('number');
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent()->nullable();
+            $table->timestamp('updated_at')->useCurrent()->nullable();
         });
     }
 

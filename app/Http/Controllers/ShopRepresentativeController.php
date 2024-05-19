@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Restaurant;
-use App\Models\Representative;
-use App\Models\Reservation;
 use App\Models\Area;
 use App\Models\Genre;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Log;
 
 
 

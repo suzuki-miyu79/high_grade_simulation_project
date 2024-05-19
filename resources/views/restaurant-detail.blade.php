@@ -36,6 +36,7 @@
             <div class="detail-description">
                 {{ $restaurant->overview }}
             </div>
+            <a class="detail-review" href="">口コミを投稿する</a>
         </div>
         <div class="detail-page__content-reservation">
             <div class="detail-page__content-reservation-inner">
