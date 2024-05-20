@@ -1,0 +1,244 @@
+.review-page__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.review-page__content-inner {
+    display: flex;
+}
+
+.review-page__content-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5em;
+    padding: 0 8em 0 3em;
+}
+
+.left-top {
+    width: 22em;
+    margin-bottom: 3.4em;
+}
+
+.left-top p {
+    font-size: 2.7rem;
+    margin: 0;
+}
+
+.restaurant-card {
+    position: relative;
+    width: 20em;
+    height: 20em;
+    background-color: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 2px 2px 5px grey;
+    margin-bottom: 0;
+}
+
+.restaurant-card__img {
+    overflow: hidden;
+}
+
+.restaurant-card__img img {
+    width: 100%;
+    margin-top: -10%;
+}
+
+.restaurant-card__content {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    background-color: #fff;
+    margin: 0;
+    padding: 1.2em;
+}
+
+.content__name p,
+.content__tag p {
+    margin: 0;
+}
+
+.content__name p {
+    font-weight: bold;
+    font-size: 1.4rem;
+}
+
+.content__tag {
+    display: flex;
+    font-size: 0.8rem;
+    margin: 0.4em 0 1.4em 0;
+}
+
+.content__tag-area {
+    margin-right: 0.5em;
+}
+
+.restaurant-card__content-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+}
+
+.content-bottom__detail-button-submit {
+    padding: 0.4em 1.2em;
+    border: none;
+    border-radius: 5px;
+    background-color: #305DFF;
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.content-bottom__favorite-button-submit {
+    border: none;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.fa-heart {
+    font-size: 2.4rem;
+}
+
+.review-page__line {
+    margin-top: 5em;
+    width: 2px;
+    height: 32em;
+    background-color: #c4c4c4;
+}
+
+/* 以下、画面右側 */
+.review-page__content-right {
+    margin-left: 6em;
+}
+
+.form-group {
+    margin-bottom: 2em;
+}
+
+.form-group label {
+    font-size: 1.6rem;
+}
+
+.star-rating span {
+    font-size: 3.6rem;
+    cursor: pointer;
+    color: #c4c4c4;
+}
+
+.star-rating2 {
+    margin: 0 0 0 -0.2em;
+}
+
+.star-rating .selected {
+    color: #305DFF;
+}
+
+.form-group-review {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group-review label {
+    margin-bottom: 0.5em;
+}
+
+.form-group-review textarea {
+    width: 36em;
+    height: 8em;
+    background-color: #f2f2f2;
+    border: 3px solid #c4c4c4;
+    padding: 0.7em 1em;
+    font-size: 1.2rem;
+}
+
+.length {
+    text-align: right;
+}
+
+.length p {
+    margin: 0;
+    font-size: 0.8rem;
+}
+
+.dropzone {
+    width: 100%;
+    padding: 5em 0 3em 0;
+    text-align: center;
+    cursor: pointer;
+    color: #000;
+    margin-top: 1em;
+    background-color: #fff;
+    height: 200px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.dropzone span {
+    font-size: 0.8rem
+}
+
+.dropzone.dragover {
+    background-color: #f2f2f2;
+}
+
+.error-message {
+    color: red;
+    margin-top: 0.5em;
+}
+
+.button {
+    margin-top: 1em;
+}
+
+.button button {
+    font-size: 1.2rem;
+    width: 35em;
+    padding: 0.9em;
+    border: none;
+    border-radius: 40px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+
+    .restaurant-card {
+        position: relative;
+        width: 18em;
+        height: 18em;
+        background-color: #fff;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 2px 2px 5px grey;
+        margin-bottom: 1.5em;
+    }
+
+    .restaurant-card__content {
+        position: absolute;
+        top: 50%;
+        width: 100%;
+        background-color: #fff;
+        margin: 0;
+        padding: 0.8em 1em;
+    }
+
+    .content__tag {
+        display: flex;
+        font-size: 0.8rem;
+        margin: 0.4em 0 1em 0;
+    }
+
+    .content-bottom__detail-button-submit {
+        padding: 0.4em 0.8em;
+        border: none;
+        border-radius: 5px;
+        background-color: #305DFF;
+        color: #fff;
+        cursor: pointer;
+        text-decoration: none;
+    }
+}

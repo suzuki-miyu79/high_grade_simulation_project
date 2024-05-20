@@ -99,6 +99,12 @@ Route::middleware('auth')->group(function () {
 
     // リマインド機能
     Route::post('/send-mail', [AdminController::class, 'sendMail'])->name('send.mail');
+
+    // 口コミ投稿ページ表示
+    Route::get('/review/{restaurant_id}', [ReviewController::class, 'create'])->name('review.create');
+
+    // 口コミ投稿機能
+    Route::post('/review/{restaurant_id}', [ReviewController::class, 'store'])->name('review.store');
 });
 
 require __DIR__ . '/auth.php';

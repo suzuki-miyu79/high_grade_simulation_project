@@ -10,7 +10,7 @@ class Review extends Model
     use HasFactory;
 
     protected $table = 'reviews';
-    protected $fillable = ['user_id', 'restaurant_id', 'rating', 'comment'];
+    protected $fillable = ['user_id', 'restaurant_id', 'review', 'rating'];
 
     // User モデルとのリレーションシップ
     public function user()

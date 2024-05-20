@@ -89,6 +89,10 @@
     margin-top: 0.7em;
 }
 
+.detail-tag p {
+    margin: 1em 0 1.5em;
+}
+
 .detail-tag-area {
     margin-right: 0.5em;
 }
@@ -114,6 +118,10 @@
 }
 
 .detail-review {
+    padding-top: 1.5em;
+}
+
+.detail-review a {
     color: #000;
 }
 

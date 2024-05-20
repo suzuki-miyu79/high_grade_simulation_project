@@ -36,7 +36,9 @@
             <div class="detail-description">
                 {{ $restaurant->overview }}
             </div>
-            <a class="detail-review" href="">口コミを投稿する</a>
+            <div class="detail-review">
+                <a href="{{ route('review.create', ['restaurant_id' => $restaurant->id]) }}">口コミを投稿する</a>
+            </div>
         </div>
         <div class="detail-page__content-reservation">
             <div class="detail-page__content-reservation-inner">
