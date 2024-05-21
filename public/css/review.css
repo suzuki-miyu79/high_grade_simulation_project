@@ -155,10 +155,18 @@
 }
 
 .length {
-    text-align: right;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
 }
 
-.length p {
+.char-error {
+    margin: 0;
+    color: red;
+    display: none;
+}
+
+.char-count {
     margin: 0;
     font-size: 0.8rem;
 }
@@ -186,6 +194,7 @@
 }
 
 .error-message {
+    display: none;
     color: red;
     margin-top: 0.5em;
 }

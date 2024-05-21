@@ -73,7 +73,8 @@
                         <label for="review">口コミを投稿</label>
                         <textarea id="review" name="review" class="form-control" placeholder="カジュアルな夜のお出かけにおすすめのスポット" required>{{ old('review') }}</textarea>
                         <div class="length">
-                            <p>0/400（最大文字数）</p>
+                            <p id="char-count" class="char-count">0/400（最大文字数）</p>
+                            <p id="char-error" class="char-error">400文字以内で入力してください。</p>
                         </div>
                     </div>
                     <div class="form-group">
@@ -83,7 +84,7 @@
                             <input type="file" id="image" name="image" accept="image/jpeg, image/png"
                                 style="display: none;" onchange="previewImage(event)">
                         </div>
-                        <div id="error-message" class="error-message" style="display: none;">
+                        <div id="error-message" class="error-message">
                             対応していないファイル形式です。JPEGまたはPNG形式の画像をアップロードしてください。</div>
                     </div>
                 </div>
@@ -181,6 +182,31 @@
                     reader.readAsDataURL(input.files[0]);
                 }
             }
+
+            // 文字数カウントとエラーチェック
+            const reviewTextarea = document.getElementById('review'); // 口コミのテキストエリアを取得
+            const charCount = document.getElementById('char-count'); // 文字数表示の要素を取得
+            const charError = document.getElementById('char-error'); // エラーメッセージの要素を取得
+            const submitBtn = document.getElementById('submit-btn'); // 送信ボタンを取得
+
+            // テキストエリアの入力イベントを監視
+            reviewTextarea.addEventListener('input', function() {
+                const currentLength = reviewTextarea.value.length; // 現在の入力文字数を取得
+                charCount.textContent = `${currentLength}/400（最大文字数）`; // 文字数表示を更新
+
+                // 文字数が400を超えたらエラーメッセージを表示し、送信ボタンを無効化
+                if (currentLength > 400) {
+                    charError.style.display = 'block'; // エラーメッセージを表示
+                    submitBtn.disabled = true; // 送信ボタンを無効化
+                } else {
+                    charError.style.display = 'none'; // エラーメッセージを非表示
+                    submitBtn.disabled = false; // 送信ボタンを有効化
+                }
+            });
+
+            // ページロード時に初期文字数を設定
+            const initialLength = reviewTextarea.value.length;
+            charCount.textContent = `${initialLength}/400（最大文字数）`;
         });
     </script>
 @endsection
