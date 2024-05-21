@@ -90,7 +90,7 @@
                 </div>
             </div>
             <div class="button">
-                <button class="submit">口コミを投稿</button>
+                <button type="submit" class="submit">口コミを投稿</button>
             </div>
         </div>
     </form>

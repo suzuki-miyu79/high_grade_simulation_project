@@ -16,11 +16,12 @@ class ReviewController extends Controller
     }
     public function store(Request $request, $restaurant_id)
     {
+        // レビューの保存
         $review = new Review();
         $review->user_id = auth()->id();
         $review->restaurant_id = $restaurant_id;
-        $review->review = $request->input('review');
         $review->rating = $request->input('rating');
+        $review->review = $request->input('review');
 
         if ($request->hasFile('image')) {
             // 画像を保存してパスを取得
@@ -29,7 +30,7 @@ class ReviewController extends Controller
             $review->image_path = asset('storage/' . $imagePath);
         }
 
-        $review->save;
+        $review->save();
 
         return redirect()->route('restaurant.detail', ['restaurant_id' => $restaurant_id])->with('success', '口コミを投稿しました。');
     }

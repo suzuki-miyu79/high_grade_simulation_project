@@ -15,7 +15,8 @@ return new class extends Migration {
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('restaurant_id')->constrained()->onDelete('cascade');
             $table->unsignedTinyInteger('rating'); // 五段階評価
-            $table->text('comment'); // コメント
+            $table->text('review'); // レビュー
+            $table->string('image_path')->nullable();
             $table->timestamp('created_at')->useCurrent()->nullable();
             $table->timestamp('updated_at')->useCurrent()->nullable();
         });
