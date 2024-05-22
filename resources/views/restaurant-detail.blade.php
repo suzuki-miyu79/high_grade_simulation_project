@@ -36,9 +36,49 @@
             <div class="detail-description">
                 {{ $restaurant->overview }}
             </div>
-            <div class="detail-review">
-                <a href="{{ route('review.create', ['restaurant_id' => $restaurant->id]) }}">口コミを投稿する</a>
-            </div>
+            {{-- 口コミ投稿または口コミ情報表示 --}}
+            @if (is_null($userReview))
+                <div class="detail-review">
+                    <a href="{{ route('review.create', ['restaurant_id' => $restaurant->id]) }}">口コミを投稿する</a>
+                </div>
+            @else
+                <div class="detail-review__info">
+                    <div class="info__button">
+                        <button class="info__button-submit">全ての口コミ情報</button>
+                    </div>
+                    <div class="info__line-top"></div>
+                    <div class="info__menu">
+                        @if (auth()->check())
+                            {{-- 編集リンク：口コミを書いた本人のみ表示 --}}
+                            @if (auth()->user()->id === $userReview->user_id)
+                                <a href="{{ route('review.edit', ['restaurant_id' => $restaurant->id, 'review_id' => $userReview->id]) }}"
+                                    class="info__menu-edit">口コミを編集</a>
+                            @endif
+
+                            {{-- 削除リンク：口コミを書いた本人または管理者に表示 --}}
+                            @if (auth()->user()->id === $userReview->user_id || auth()->user()->is_admin)
+                                <form
+                                    action="{{ route('review.destroy', ['restaurant_id' => $restaurant->id, 'review_id' => $userReview->id]) }}"
+                                    method="POST" style="display: inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="info__menu-delete">口コミを削除</button>
+                                </form>
+                            @endif
+                        @endif
+                    </div>
+                    <div class="info-rating">
+                        @for ($i = 1; $i <= 5; $i++)
+                            <span class="star">★</span>
+                        @endfor
+                    </div>
+                    <div class="info-review">
+                        {{ $userReview->review }}
+                    </div>
+                    <div class="info__line-bottom"></div>
+                </div>
+            @endif
+
         </div>
         <div class="detail-page__content-reservation">
             <div class="detail-page__content-reservation-inner">
@@ -138,5 +178,21 @@
                 document.getElementById('confirmation_time').innerText = time;
                 document.getElementById('confirmation_number').innerText = number + '人';
             }
+
+            // レビュー表示
+            document.addEventListener('DOMContentLoaded', function() {
+                // 評価値を取得。レビューがない場合は0に設定。
+                const rating = {{ $userReview ? $userReview->rating : 0 }};
+
+                const stars = document.querySelectorAll('.info-rating .star');
+
+                for (let i = 0; i < stars.length; i++) {
+                    if (i < rating) {
+                        stars[i].classList.add('filled');
+                    } else {
+                        stars[i].classList.remove('filled');
+                    }
+                }
+            });
         </script>
     @endsection

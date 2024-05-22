@@ -105,6 +105,15 @@ Route::middleware('auth')->group(function () {
 
     // 口コミ投稿機能
     Route::post('/review/{restaurant_id}', [ReviewController::class, 'store'])->name('review.store');
+
+    // 口コミ編集ページ表示
+    Route::get('/review/{restaurant_id}/{review_id}/edit', [ReviewController::class, 'edit'])->name('review.edit');
+
+    // 口コミ更新機能
+    Route::post('/review/{restaurant_id}/{review_id}/update', [ReviewController::class, 'update'])->name('review.update');
+
+    // 口コミ削除機能
+    Route::delete('/review/{restaurant_id}/{review_id}/destroy', [ReviewController::class, 'destroy'])->name('review.destroy');
 });
 
 require __DIR__ . '/auth.php';

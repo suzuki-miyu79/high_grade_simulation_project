@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Restaurant;
+use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
 
 class RestaurantController extends Controller
 {
@@ -97,7 +99,16 @@ class RestaurantController extends Controller
     {
         // 一覧ページで選択した飲食店の詳細情報を取得
         $restaurant = Restaurant::findOrFail($restaurant_id);
+        $user = Auth::user();
 
-        return view('restaurant-detail', compact('restaurant'));
+        $userReview = null;
+        if ($user) {
+            // ユーザーがこの店舗に対して既に口コミを投稿しているかを確認
+            $userReview = Review::where('restaurant_id', $restaurant_id)
+                ->where('user_id', $user->id)
+                ->first();
+        }
+
+        return view('restaurant-detail', compact('restaurant', 'userReview'));
     }
 }
