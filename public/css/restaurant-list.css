@@ -55,10 +55,6 @@
     display: flex;
 }
 
-select option {
-    padding: 0.6em;
-}
-
 .sort,
 .search {
     display: flex;
