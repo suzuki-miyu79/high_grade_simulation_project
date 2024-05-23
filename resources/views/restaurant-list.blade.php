@@ -16,29 +16,45 @@
             </button>
             <h1>Rese</h1>
         </div>
-        <form action="{{ route('restaurant.index') }}" method="GET">
+        <form id="sortForm" action="{{ route('restaurant.index') }}" method="GET">
             @csrf
-            <div class="search">
-                <select onchange="submit(this.form)" name="area" id="area" class="search__form-area">
-                    <option value="">All area</option>
-                    @foreach ($areas as $area)
-                        <option value="{{ $area->prefectures_name }}"
-                            {{ request('area') == $area->prefectures_name ? 'selected' : '' }}>{{ $area->prefectures_name }}
+            <div class="header__form">
+                <div class="sort">
+                    {{-- 並び替え --}}
+                    <select name="sort" id="sort">
+                        <option value="">並び替え：評価高/低</option>
+                        <option value="random" {{ request('sort') == 'random' ? 'selected' : '' }}>ランダム</option>
+                        <option value="rating_desc" {{ request('sort') == 'rating_desc' ? 'selected' : '' }}>評価が高い順
                         </option>
-                    @endforeach
-                </select>
-                <div class="line"></div>
-                <select onchange="submit(this.form)" name="genre" id="genre" class="search__form-genre">
-                    <option value="">All genre</option>
-                    @foreach ($genres as $genre)
-                        <option value="{{ $genre->genre_name }}"
-                            {{ request('genre') == $genre->genre_name ? 'selected' : '' }}>{{ $genre->genre_name }}</option>
-                    @endforeach
-                </select>
-                <div class="line"></div>
-                <img src="image/search-icon.png" alt="">
-                <input type="text" name="keyword" id="keyword" class="search__form-name"
-                    value="{{ request('keyword') }}" placeholder="Search …">
+                        <option value="rating_asc" {{ request('sort') == 'rating_asc' ? 'selected' : '' }}>評価が低い順
+                        </option>
+                    </select>
+                </div>
+                {{-- 検索 --}}
+                <div class="search">
+                    <select onchange="submit(this.form)" name="area" id="area" class="search__form-area">
+                        <option value="">All area</option>
+                        @foreach ($areas as $area)
+                            <option value="{{ $area->prefectures_name }}"
+                                {{ request('area') == $area->prefectures_name ? 'selected' : '' }}>
+                                {{ $area->prefectures_name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <div class="line"></div>
+                    <select onchange="submit(this.form)" name="genre" id="genre" class="search__form-genre">
+                        <option value="">All genre</option>
+                        @foreach ($genres as $genre)
+                            <option value="{{ $genre->genre_name }}"
+                                {{ request('genre') == $genre->genre_name ? 'selected' : '' }}>{{ $genre->genre_name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    <div class="line"></div>
+                    <img src="image/search-icon.png" alt="">
+                    <input type="text" name="keyword" id="keyword" class="search__form-name"
+                        value="{{ request('keyword') }}" placeholder="Search …">
+                </div>
             </div>
         </form>
     </header>
@@ -83,4 +99,10 @@
     </main>
     <script src="{{ asset('js/favorite.js') }}" defer></script>
     <script src="https://kit.fontawesome.com/5dc5d1378e.js" crossorigin="anonymous"></script>
+    {{-- 並べ替えオプションの自動送信 --}}
+    <script>
+        document.getElementById('sort').addEventListener('change', function() {
+            document.getElementById('sortForm').submit();
+        });
+    </script>
 @endsection

@@ -4,10 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Area;
-use App\Models\Genre;
-use App\Models\Favorite;
-use App\Models\Reservation;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Restaurant extends Model
 {
@@ -52,4 +49,25 @@ class Restaurant extends Model
     {
         return $this->hasMany(Reservation::class);
     }
+
+    // Reviewsリレーション
+    public function reviews(): HasMany
+    {
+        return $this->hasMany(Review::class);
+    }
+
+    // 平均評価を計算するアクセサ
+    public function getAverageRatingAttribute(): ?float
+    {
+        return $this->reviews()->avg('rating');
+    }
+
+    // 指定したユーザーがこのレストランをお気に入りにしているかを確認するメソッド
+    // public function isFavoritedByUser($user): bool
+    // {
+    //     if ($user) {
+    //         return $this->favorites()->where('user_id', $user->id)->exists();
+    //     }
+    //     return false;
+    // }
 }

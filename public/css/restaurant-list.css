@@ -51,6 +51,15 @@
     margin-top: 0.5em;
 }
 
+.header__form {
+    display: flex;
+}
+
+select option {
+    padding: 0.6em;
+}
+
+.sort,
 .search {
     display: flex;
     align-items: center;
@@ -58,6 +67,10 @@
     box-shadow: 2px 2px 5px grey;
     border-radius: 5px;
     padding: 0.6em;
+}
+
+.search {
+    margin-left: 2em;
 }
 
 .fa-magnifying-glass {
@@ -79,6 +92,7 @@
     outline: none;
 }
 
+.sort select,
 .search select,
 .search input {
     border: 0;

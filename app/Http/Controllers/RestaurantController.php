@@ -86,8 +86,28 @@ class RestaurantController extends Controller
                     $subquery->where('genre_name', $genre);
                 });
             })
+            // キーワード検索
             ->when($request->keyword, function ($query, $keyword) {
                 return $query->where('name', 'like', '%' . $keyword . '%');
+            })
+            // 並び替え
+            ->when($request->sort, function ($query, $sort) {
+                if ($sort == 'random') {
+                    // ランダム
+                    return $query->inRandomOrder();
+                } elseif ($sort == 'rating_desc') {
+                    // 評価が高い順（評価がないものは最後に）
+                    return $query->leftJoin('reviews', 'restaurants.id', '=', 'reviews.restaurant_id')
+                        ->selectRaw('restaurants.*, COALESCE(AVG(reviews.rating), 0) as average_rating')
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('average_rating DESC, restaurants.id ASC');
+                } elseif ($sort == 'rating_asc') {
+                    // 評価が低い順（評価がないものは最後に）
+                    return $query->leftJoin('reviews', 'restaurants.id', '=', 'reviews.restaurant_id')
+                        ->selectRaw('restaurants.*, COALESCE(AVG(reviews.rating), 9999) as average_rating')
+                        ->groupBy('restaurants.id')
+                        ->orderByRaw('average_rating ASC, restaurants.id ASC');
+                }
             })
             ->get();
 
