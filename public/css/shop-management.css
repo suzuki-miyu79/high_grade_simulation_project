@@ -289,7 +289,7 @@
     }
 }
 
-@media screen and (max-width: 428px) {
+@media screen and (max-width: 480px) {
     .shop-management__content {
         display: flex;
         flex-direction: column;
