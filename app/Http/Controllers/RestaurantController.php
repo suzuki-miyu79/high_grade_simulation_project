@@ -3,11 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
+use App\Http\Requests\ImportRestaurantRequest;
+use App\Http\Requests\ValidateRestaurantRecord;
 use App\Models\Area;
 use App\Models\Genre;
 use App\Models\Restaurant;
 use App\Models\Review;
-use Illuminate\Support\Facades\Auth;
+use League\Csv\Reader;
+
 
 class RestaurantController extends Controller
 {
@@ -130,5 +136,79 @@ class RestaurantController extends Controller
         }
 
         return view('restaurant-detail', compact('restaurant', 'userReview'));
+    }
+
+    /**
+     * CSVファイルからレストラン情報をインポートする
+     *
+     * @param ImportRestaurantRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function import(ImportRestaurantRequest $request)
+    {
+        try {
+            // ログインユーザーのIDを取得
+            $userId = Auth::id();
+
+            // アップロードされたCSVファイルを取得
+            $file = $request->file('csv_file');
+
+            // CSVファイルを読み込む
+            $csv = Reader::createFromPath($file->getPathname(), 'r');
+
+            // ヘッダー行を設定
+            $csv->setHeaderOffset(0);
+
+            // CSVファイルからレコードを取得
+            $records = $csv->getRecords();
+            $errors = [];
+
+            // 各レコードを処理
+            foreach ($records as $record) {
+                // 各レコードのバリデーションを行う
+                $validator = Validator::make($record, (new ValidateRestaurantRecord)->rules());
+
+                // バリデーションエラーがあればエラーメッセージを記録し、次のレコードに進む
+                if ($validator->fails()) {
+                    $errors[] = $validator->errors()->all();
+                    continue;
+                }
+
+                // レコードのエリア名から対応するエリアを取得
+                $area = Area::where('prefectures_name', $record['area'])->first();
+                Log::info('Area retrieved: ', ['area' => $area]);
+
+                // レコードのジャンル名から対応するジャンルを取得
+                $genre = Genre::where('genre_name', $record['genre'])->first();
+                Log::info('Genre retrieved: ', ['genre' => $genre]);
+
+                // エリアまたはジャンルが存在しない場合はエラーメッセージを記録し、次のレコードに進む
+                if (!$area || !$genre) {
+                    $errors[] = ['エリアまたはジャンルが存在しません: ' . $record['area'] . ', ' . $record['genre']];
+                    continue;
+                }
+
+                // レストランをデータベースに登録
+                Restaurant::create([
+                    'user_id' => $userId, // ログインユーザーのIDを提供
+                    'name' => $record['name'],
+                    'image' => $record['image'],
+                    'area_id' => $area->id,
+                    'genre_id' => $genre->id,
+                    'overview' => $record['overview'],
+                ]);
+            }
+
+            // エラーがあればエラーメッセージを表示し、なければ成功メッセージを表示
+            if (count($errors) > 0) {
+                return back()->withErrors($errors);
+            }
+
+            // レストラン一覧ページにリダイレクトし、成功メッセージを表示
+            return redirect()->route('restaurant.index')->with('success', 'CSVファイルが正常にインポートされました');
+        } catch (\Exception $e) {
+            // 例外が発生した場合はエラーメッセージを表示
+            return back()->withErrors([$e->getMessage()]);
+        }
     }
 }

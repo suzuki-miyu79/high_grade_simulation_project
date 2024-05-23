@@ -66,6 +66,22 @@
             <p class="authority-name">店舗管理ページ</p>
             <h2 class="restaurant-info__title">店舗情報</h2>
             <div class="restaurant-info__content">
+                {{-- CSVインポート --}}
+                <div class="restaurant-info__import-inner" id="import-form">
+                    <form class="restaurant-info__import-form" id="import_restaurant_form"
+                        action="{{ route('restaurant.import') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="restaurant-info__import-form--csv">
+                            <label>CSVファイル：</label>
+                            <input class="input-file" type="file" id="csv_file" name="csv_file" accept=".csv">
+                        </div>
+                        <div class="restaurant-info__import-form--button">
+                            <button type="submit" id="import-button"
+                                class="restaurant-info__import-form--button-submit">インポート</button>
+                        </div>
+                    </form>
+                </div>
+                {{-- 新規作成用ボタン --}}
                 <div class="restaurant-info__create">
                     <button id="new-create-button" onclick="showNewForm()">新規作成</button>
                 </div>

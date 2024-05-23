@@ -114,6 +114,9 @@ Route::middleware('auth')->group(function () {
 
     // 口コミ削除機能
     Route::delete('/review/{restaurant_id}/{review_id}/destroy', [ReviewController::class, 'destroy'])->name('review.destroy');
+
+    // 店舗情報登録（CSVインポート）
+    Route::post('/shop-management/import', [RestaurantController::class, 'import'])->name('restaurant.import');
 });
 
 require __DIR__ . '/auth.php';

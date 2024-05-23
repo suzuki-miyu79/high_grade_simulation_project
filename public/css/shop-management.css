@@ -39,6 +39,21 @@
     color: #fff;
 }
 
+.restaurant-info__import-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.restaurant-info__import-form button {
+    background-color: #305DFF;
+    border-radius: 5px;
+    border: none;
+    padding: 0.5em 1em;
+    color: #fff;
+}
+
 .reservation-info__content-top__icon img,
 .reservation-info__content-top__cancel img {
     height: 1.5em;
@@ -178,7 +193,6 @@
     background-color: #305DFF;
     color: #fff;
     cursor: pointer;
-    margin-top: 0.95em;
 }
 
 @media screen and (max-width: 768px) {
