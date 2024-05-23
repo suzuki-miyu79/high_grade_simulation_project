@@ -68,6 +68,7 @@
             <div class="restaurant-info__content">
                 {{-- CSVインポート --}}
                 <div class="restaurant-info__import-inner" id="import-form">
+                    <p>インポート（新規作成のみ）</p>
                     <form class="restaurant-info__import-form" id="import_restaurant_form"
                         action="{{ route('restaurant.import') }}" method="post" enctype="multipart/form-data">
                         @csrf
@@ -81,6 +82,7 @@
                         </div>
                     </form>
                 </div>
+                <div class="line"></div>
                 {{-- 新規作成用ボタン --}}
                 <div class="restaurant-info__create">
                     <button id="new-create-button" onclick="showNewForm()">新規作成</button>
@@ -229,5 +231,38 @@
             document.getElementById('new-form').style.display = 'block';
             document.getElementById('update-form').style.display = 'none';
         }
+
+        // 「店舗管理ページ」の表示位置
+        document.addEventListener('DOMContentLoaded', function() {
+            // 要素の位置を移動する関数を定義
+            function moveElement() {
+                // .authority-name 要素を取得
+                var authorityName = document.querySelector('.authority-name');
+                // .restaurant-info 要素を取得
+                var restaurantInfo = document.querySelector('.restaurant-info');
+                // .reservation-info 要素を取得
+                var reservationInfo = document.querySelector('.reservation-info');
+
+                // 画面の幅が480px以下の場合
+                if (window.innerWidth <= 480) {
+                    // .authority-name 要素を .reservation-info 内の一番上に移動
+                    reservationInfo.insertBefore(authorityName, reservationInfo.firstChild);
+                    // 要素を表示する
+                    authorityName.style.display = 'block';
+                } else {
+                    // 画面の幅が480pxを超える場合
+                    // .authority-name 要素を .restaurant-info 内の一番上に移動
+                    restaurantInfo.insertBefore(authorityName, restaurantInfo.firstChild);
+                    // 要素を表示する
+                    authorityName.style.display = 'block';
+                }
+            }
+
+            // 初回ロード時に要素の位置を移動
+            moveElement();
+
+            // ウィンドウサイズ変更時に要素の位置を移動
+            window.addEventListener('resize', moveElement);
+        });
     </script>
 @endsection

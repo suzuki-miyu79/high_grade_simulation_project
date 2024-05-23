@@ -39,21 +39,6 @@
     color: #fff;
 }
 
-.restaurant-info__import-form {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    margin-bottom: 1em;
-}
-
-.restaurant-info__import-form button {
-    background-color: #305DFF;
-    border-radius: 5px;
-    border: none;
-    padding: 0.5em 1em;
-    color: #fff;
-}
-
 .reservation-info__content-top__icon img,
 .reservation-info__content-top__cancel img {
     height: 1.5em;
@@ -111,6 +96,7 @@
     cursor: pointer;
 }
 
+/* 以下、画面右側 */
 .restaurant-info {
     width: 54%;
 }
@@ -119,6 +105,44 @@
     margin: 0 0 1.1em 0;
     font-size: 2rem;
     font-weight: bold;
+}
+
+.restaurant-info__import-inner p {
+    margin: 1em 0 0;
+    font-weight: bold;
+}
+
+.restaurant-info__import-form {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 1em;
+}
+
+.restaurant-info__import-form button {
+    background-color: #305DFF;
+    border-radius: 5px;
+    border: none;
+    padding: 0.5em 1em;
+    color: #fff;
+}
+
+.line {
+    height: 2px;
+    position: relative;
+    margin-bottom: 1em;
+}
+
+.line::before {
+    content: "";
+    background-image: linear-gradient(to right, #c4c4c4, #c4c4c4 3px, transparent 3px, transparent 8px);
+    background-size: 8px 2px;
+    background-repeat: repeat-x;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .restaurant-info__create button {
@@ -234,6 +258,16 @@
         width: 50%;
     }
 
+    .restaurant-info__import-form {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .restaurant-info__import-form button {
+        margin-top: 0.5em;
+    }
+
     .restaurant-info__form,
     .restaurant-info__form--image,
     .restaurant-info__form--textarea {
@@ -252,5 +286,24 @@
     .restaurant-info__form--textarea textarea {
         width: 100%;
         margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 428px) {
+    .shop-management__content {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .authority-name {
+        display: none;
+    }
+
+    .reservation-info {
+        width: 100%;
+    }
+
+    .restaurant-info {
+        width: 100%;
     }
 }
