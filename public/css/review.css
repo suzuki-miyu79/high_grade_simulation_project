@@ -173,13 +173,13 @@
 
 .dropzone {
     width: 100%;
-    padding: 5em 0 3em 0;
+    padding: 5em 0 0;
     text-align: center;
     cursor: pointer;
     color: #000;
     margin-top: 1em;
     background-color: #fff;
-    height: 200px;
+    height: 11em;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -249,30 +249,21 @@
         width: 100%;
     }
 
+    .dropzone {
+        padding: 4em 0 0;
+        height: 10em;
+    }
+
     .button button {
         width: 20em;
     }
 }
 
 @media screen and (max-width: 480px) {
-    .review-page__content-inner {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .review-page__content-left {
-        margin-top: 2em;
-        padding: 0;
-    }
 
     .left-top {
         width: 22em;
         margin-bottom: 1em;
-    }
-
-    .left-top p {
-        font-size: 2.2rem;
-        margin: 0;
     }
 
     .review-page__line {
@@ -284,10 +275,6 @@
 
     .review-page__content-right {
         margin: 0 1em;
-    }
-
-    .form-group-review textarea {
-        width: 100%;
     }
 
     .button button {
