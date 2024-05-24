@@ -110,7 +110,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/review/{restaurant_id}/{review_id}/edit', [ReviewController::class, 'edit'])->name('review.edit');
 
     // 口コミ更新機能
-    Route::post('/review/{restaurant_id}/{review_id}/update', [ReviewController::class, 'update'])->name('review.update');
+    Route::put('/review/{restaurant_id}/{review_id}', [ReviewController::class, 'update'])->name('review.update');
 
     // 口コミ削除機能
     Route::delete('/review/{restaurant_id}/{review_id}/destroy', [ReviewController::class, 'destroy'])->name('review.destroy');
