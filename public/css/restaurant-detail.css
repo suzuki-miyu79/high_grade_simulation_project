@@ -254,12 +254,11 @@
 
 @media screen and (max-width: 768px) {
     .detail-page__content-reservation {
-        position: relative;
-        width: 48%;
+        position: fixed;
+        top: 5em;
+        right: 3em;
+        width: 40%;
         overflow: hidden;
-        background-color: #305DFF;
-        border-radius: 5px;
-        box-shadow: 2px 2px 5px grey;
     }
 
     .detail-page__content-reservation-inner {

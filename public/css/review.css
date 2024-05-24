@@ -214,40 +214,83 @@
 }
 
 @media screen and (max-width: 768px) {
-
-    .restaurant-card {
-        position: relative;
-        width: 18em;
-        height: 18em;
-        background-color: #fff;
-        border-radius: 5px;
-        overflow: hidden;
-        box-shadow: 2px 2px 5px grey;
-        margin-bottom: 1.5em;
-    }
-
-    .restaurant-card__content {
-        position: absolute;
-        top: 50%;
-        width: 100%;
-        background-color: #fff;
-        margin: 0;
-        padding: 0.8em 1em;
-    }
-
-    .content__tag {
+    .review-page__content-inner {
         display: flex;
-        font-size: 0.8rem;
-        margin: 0.4em 0 1em 0;
+        flex-direction: column;
     }
 
-    .content-bottom__detail-button-submit {
-        padding: 0.4em 0.8em;
-        border: none;
-        border-radius: 5px;
-        background-color: #305DFF;
-        color: #fff;
-        cursor: pointer;
-        text-decoration: none;
+    .review-page__content-left {
+        margin-top: 2em;
+        padding: 0;
+    }
+
+    .left-top {
+        width: 33em;
+        margin-bottom: 1em;
+    }
+
+    .left-top p {
+        font-size: 2.2rem;
+        margin: 0;
+    }
+
+    .review-page__line {
+        margin: 2em 6em;
+        width: 30em;
+        height: 2px;
+        background-color: #c4c4c4;
+    }
+
+    .review-page__content-right {
+        margin: 0 5em;
+    }
+
+    .form-group-review textarea {
+        width: 100%;
+    }
+
+    .button button {
+        width: 20em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .review-page__content-inner {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .review-page__content-left {
+        margin-top: 2em;
+        padding: 0;
+    }
+
+    .left-top {
+        width: 22em;
+        margin-bottom: 1em;
+    }
+
+    .left-top p {
+        font-size: 2.2rem;
+        margin: 0;
+    }
+
+    .review-page__line {
+        margin: 2em 2em;
+        width: 20em;
+        height: 2px;
+        background-color: #c4c4c4;
+    }
+
+    .review-page__content-right {
+        margin: 0 1em;
+    }
+
+    .form-group-review textarea {
+        width: 100%;
+    }
+
+    .button button {
+        width: 15em;
     }
 }
