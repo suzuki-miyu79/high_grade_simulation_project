@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Restaurant;
 use App\Models\Review;
+use App\Http\Requests\ReviewRequest;
 
 class ReviewController extends Controller
 {
+    // 口コミ投稿ページ表示
     public function create($restaurant_id)
     {
         $restaurant = Restaurant::findOrFail($restaurant_id);
-        return view('review', compact('restaurant'));
+        return view('review.review', compact('restaurant'));
     }
 
     // 口コミ投稿機能
@@ -42,26 +44,22 @@ class ReviewController extends Controller
         // 編集する口コミを取得
         $review = Review::where('id', $review_id)->where('restaurant_id', $restaurant_id)->first();
 
+        // レストラン情報を取得
+        $restaurant = Restaurant::find($restaurant_id);
+
         // 口コミが存在しない、または現在のユーザーがこの口コミを編集する権限がない場合、リダイレクト
         if (!$review || auth()->user()->id !== $review->user_id) {
             return redirect()->route('restaurant.detail', ['restaurant_id' => $restaurant_id])->with('error', '編集権限がありません。');
         }
 
         // 編集フォームを表示する
-        return view('reviews.edit', compact('review'));
+        return view('review.edit', compact('review', 'restaurant'));
     }
 
     // 口コミ更新処理
-    public function update(Request $request, $restaurant_id, $review_id)
+    public function update(ReviewRequest $request, $restaurant_id, $review_id)
     {
-        // フォームからの入力を検証する
-        $request->validate([
-            'rating' => 'required|integer|min:1|max:5',
-            'review' => 'required|string|max:400',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
-        ]);
-
-        // 更新する口コミを取得
+        // 編集する口コミを取得
         $review = Review::where('id', $review_id)->where('restaurant_id', $restaurant_id)->first();
 
         // 口コミが存在しない、または現在のユーザーがこの口コミを編集する権限がない場合、リダイレクト
@@ -69,14 +67,13 @@ class ReviewController extends Controller
             return redirect()->route('restaurant.detail', ['restaurant_id' => $restaurant_id])->with('error', '編集権限がありません。');
         }
 
-        // 口コミの評価と内容を更新
-        $review->rating = $request->input('rating');
-        $review->review = $request->input('review');
+        // 口コミを更新
+        $review->rating = $request->rating;
+        $review->review = $request->review;
 
-        // 画像がアップロードされた場合、その画像を保存しパスを更新
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('review_images', 'public');
-            $review->image_path = asset('storage/' . $imagePath);
+            $imagePath = $request->file('image')->store('images', 'public');
+            $review->image = $imagePath;
         }
 
         $review->save();
