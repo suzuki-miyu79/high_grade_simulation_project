@@ -38,7 +38,9 @@
 - QRコード発行機能
 - 評価機能
     - 五段階評価
-    - コメント送信
+    - 口コミ投稿
+    - 口コミ編集
+    - 口コミ削除
 - 決済機能
 - ユーザー情報取得機能
     - ユーザーお気に入り一覧取得
@@ -57,7 +59,9 @@
 - リマインダー機能
 - ストレージ保存機能
 - バリデーション
-- レスポンシブデザイン（768px）
+- レスポンシブデザイン（768px, 480px）
+- 店舗一覧ソート機能
+- csvインポート機能
 
 ## 使用技術（実行環境）
 ### プログラミング言語
@@ -75,7 +79,7 @@
 ![テーブル設計](https://github.com/suzuki-miyu79/high_grade_simulation_project/assets/144597636/d8be949f-d4d5-46a6-b414-0d7a01b4c359)
 
 ## ER図
-![er_high_grade_simulation_project](https://github.com/suzuki-miyu79/high_grade_simulation_project/assets/144597636/ffa9993a-ca6c-41d3-805d-84185c413efa)
+![er_high_grade_simulation_project drawio](https://github.com/suzuki-miyu79/high_grade_simulation_project/assets/144597636/5e8315b2-7aa8-4973-a323-d781bf76dfd8)
 
 # 環境構築
 ### 1．Laravel Sailをインストール
@@ -133,17 +137,33 @@
 
   ./vendor/bin/sail artisan breeze:install
 
-### 6．migrateコマンドの実行
+### 6．league/csv パッケージのインストール
+- league/csvのパッケージを追加します。
+
+  composer require league/csv
+
+### 7．migrateコマンドの実行
 - マイグレーションファイルの内容をデータベースに反映させます。
 
   ./vendor/bin/sail artisan migrate
 
-### 7．ダミーデータの作成
+### 8．ダミーデータの作成
 - シーディングでダミーデータを作成します。
 
   ./vendor/bin/sail artisan db:seed
 
-### 8．リマインダー機能の確認
+### 9．リマインダー機能の確認
 - スケジュールに設定している時間にリマインダー送信が実行されることを、以下のコマンドで確認できます。（ローカル環境）
   
   ./vendor/bin/sail artisan schedule:work
+
+### 10．csvファイルの記述方法
+- 店舗情報のインポートに使用するcsvファイルは、ExcelやGoogleスプレッドシートなどのスプレッドシートソフトを使用して、データを入力します。
+- 最初の行にヘッダーを入力し、その下に各レコードのデータを入力します。
+![スクリーンショット 2024-05-26 013311](https://github.com/suzuki-miyu79/high_grade_simulation_project/assets/144597636/5266afaa-770c-44e5-96b0-7b928f6505a7)
+- 入力が完了したら、Excelの場合は「CSV UTF-8」形式で保存、Googleスプレッドシートの場合は「カンマ区切り形式（.csv）」でダウンロードします。
+- テキストエディタを使用してCSVファイルを作成する場合は、各フィールドをカンマで区切り、各レコードを新しい行に記述します。
+```
+name,area,genre,overview,image
+鮨屋鈴木,東京都,寿司,最最高の寿司がお楽しみいただけます。,https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg
+```
