@@ -82,6 +82,7 @@
                     </div>
                 </div>
             @endif
+            <div class="info__line-top" style="display: none;"></div>
             <div class="info--other-review" style="display: none;">
                 <div id="additionalReviews">
                     @foreach ($otherReviews as $review)
@@ -243,24 +244,33 @@
                     // 他のユーザーの口コミ情報をJavaScriptの配列に変換
                     const otherReviews = {!! json_encode($otherReviews) !!};
 
-                    // 各口コミアイテムについて処理を行う
-                    reviewItems.forEach((item, index) => {
-                        const rating = otherReviews[index] ? otherReviews[index].rating :
-                            0; // 各口コミの評価を取得
-                        const stars = item.querySelectorAll('.info-rating .star');
+                    if (otherReviews.length === 0) {
+                        // ↑のラインを表示
+                        document.querySelector('.info__line-top').style.display = 'block';
+                        // 口コミがない場合、メッセージを表示
+                        document.querySelector('.info--other-review').innerHTML = "この店舗の口コミはまだありません";
+                        // 下のラインを表示
+                        document.querySelector('.info__line-bottom').style.display = 'block';
+                    } else {
+                        // 各口コミアイテムについて処理を行う
+                        reviewItems.forEach((item, index) => {
+                            const rating = otherReviews[index] ? otherReviews[index].rating :
+                                0; // 各口コミの評価を取得
+                            const stars = item.querySelectorAll('.info-rating .star');
 
-                        // 評価に基づいて星を表示する
-                        stars.forEach((star, i) => {
-                            if (i < rating) {
-                                star.classList.add('filled');
-                            } else {
-                                star.classList.remove('filled');
-                            }
+                            // 評価に基づいて星を表示する
+                            stars.forEach((star, i) => {
+                                if (i < rating) {
+                                    star.classList.add('filled');
+                                } else {
+                                    star.classList.remove('filled');
+                                }
+                            });
                         });
-                    });
 
-                    // ページの一番下のラインを表示
-                    document.querySelector('.info__line-bottom').style.display = 'block';
+                        // ページの一番下のラインを表示
+                        document.querySelector('.info__line-bottom').style.display = 'block';
+                    }
                 });
             });
         </script>
