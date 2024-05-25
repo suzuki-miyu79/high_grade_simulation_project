@@ -162,7 +162,7 @@
 - 最初の行にヘッダーを入力し、その下に各レコードのデータを入力します。
 ![スクリーンショット 2024-05-26 013311](https://github.com/suzuki-miyu79/high_grade_simulation_project/assets/144597636/5266afaa-770c-44e5-96b0-7b928f6505a7)
 - 入力が完了したら、Excelの場合は「CSV UTF-8」形式で保存、Googleスプレッドシートの場合は「カンマ区切り形式（.csv）」でダウンロードします。
-- テキストエディタを使用してCSVファイルを作成する場合は、各フィールドをカンマで区切り、各レコードを新しい行に記述します。
+- テキストエディタを使用してcsvファイルを作成する場合は、各フィールドをカンマで区切り、各レコードを新しい行に記述します。
 ```
 name,area,genre,overview,image
 鮨屋鈴木,東京都,寿司,最最高の寿司がお楽しみいただけます。,https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg
