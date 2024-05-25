@@ -8,7 +8,7 @@
 ## アプリケーションURL
 開発環境：http://localhost/
 
-本番環境：http://57.180.65.95/
+本番環境：http://57.180.65.95/（切断済み）
 
 ### テスト用アカウント（開発・本番）
 [管理者アカウント]
@@ -76,7 +76,7 @@
 - MySQL 8.0
 
 ## テーブル設計
-![テーブル設計](https://github.com/suzuki-miyu79/high_grade_simulation_project/assets/144597636/d8be949f-d4d5-46a6-b414-0d7a01b4c359)
+![スクリーンショット 2024-05-26 015638](https://github.com/suzuki-miyu79/high_grade_simulation_project/assets/144597636/e6e88f39-bcc2-4887-bf32-2d35745e0dea)
 
 ## ER図
 ![er_high_grade_simulation_project drawio](https://github.com/suzuki-miyu79/high_grade_simulation_project/assets/144597636/5e8315b2-7aa8-4973-a323-d781bf76dfd8)
