@@ -38,13 +38,18 @@
             </div>
             {{-- 口コミ投稿または口コミ情報表示 --}}
             @if (is_null($userReview))
-                <div class="detail-review">
-                    <a href="{{ route('review.create', ['restaurant_id' => $restaurant->id]) }}">口コミを投稿する</a>
+                @if (auth()->user()->role === null)
+                    <div class="detail-review">
+                        <a href="{{ route('review.create', ['restaurant_id' => $restaurant->id]) }}">口コミを投稿する</a>
+                    </div>
+                @endif
+                <div class="info__button">
+                    <button id="loadReviewsButton" class="info__button-submit">口コミを表示</button>
                 </div>
             @else
                 <div class="detail-review__info">
                     <div class="info__button">
-                        <button class="info__button-submit">全ての口コミ情報</button>
+                        <button id="loadReviewsButton" class="info__button-submit">全ての口コミ情報</button>
                     </div>
                     <div class="info__line-top"></div>
                     <div class="info__menu">
@@ -56,7 +61,7 @@
                             @endif
 
                             {{-- 削除リンク：口コミを書いた本人または管理者に表示 --}}
-                            @if (auth()->user()->id === $userReview->user_id || auth()->user()->is_admin)
+                            @if (auth()->user()->id === $userReview->user_id || auth()->user()->role === 'admin')
                                 <form
                                     action="{{ route('review.destroy', ['restaurant_id' => $restaurant->id, 'review_id' => $userReview->id]) }}"
                                     method="POST" style="display: inline;">
@@ -75,11 +80,40 @@
                     <div class="info-review">
                         {{ $userReview->review }}
                     </div>
-                    <div class="info__line-bottom"></div>
                 </div>
             @endif
-
+            <div class="info--other-review" style="display: none;">
+                <div id="additionalReviews">
+                    @foreach ($otherReviews as $review)
+                        <div class="info-review-item">
+                            <div class="info__line-top"></div>
+                            <div class="info__menu">
+                                @if (auth()->check())
+                                    {{-- 削除リンク：管理者のみ表示 --}}
+                                    @if (auth()->user()->role === 'admin')
+                                        <form
+                                            action="{{ route('review.destroy', ['restaurant_id' => $restaurant->id, 'review_id' => $userReview->id]) }}"
+                                            method="POST" style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="info__menu-delete">口コミを削除</button>
+                                        </form>
+                                    @endif
+                                @endif
+                            </div>
+                            <div class="info-rating">
+                                @for ($i = 1; $i <= 5; $i++)
+                                    <span class="star">★</span>
+                                @endfor
+                            </div>
+                            <div class="info-review">{{ $review->review }}</div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="info__line-bottom" style="display: none;"></div>
         </div>
+
         <div class="detail-page__content-reservation">
             <div class="detail-page__content-reservation-inner">
                 <h3>予約</h3>
@@ -165,8 +199,9 @@
                 </form>
             </div>
         </div>
-        {{-- 予約内容の即時表示 --}}
+
         <script>
+            // 予約内容の即時表示
             // セレクトボックスの選択が変更されたときにビューを更新する
             function updateConfirmationInfo() {
                 var date = document.getElementById('reservation_date').value;
@@ -179,11 +214,10 @@
                 document.getElementById('confirmation_number').innerText = number + '人';
             }
 
-            // レビュー表示
+            // ユーザーが投稿した口コミ表示
             document.addEventListener('DOMContentLoaded', function() {
-                // 評価値を取得。レビューがない場合は0に設定。
+                // ログインユーザーの評価値を取得。口コミがない場合は0に設定。
                 const rating = {{ $userReview ? $userReview->rating : 0 }};
-
                 const stars = document.querySelectorAll('.info-rating .star');
 
                 for (let i = 0; i < stars.length; i++) {
@@ -193,6 +227,41 @@
                         stars[i].classList.remove('filled');
                     }
                 }
+                // 口コミがある場合のみ、ページの一番下のラインを表示
+                if (rating > 0) {
+                    document.querySelector('.info__line-bottom').style.display = 'block';
+                }
+
+                // 口コミ表示ボタンのクリック動作
+                document.getElementById('loadReviewsButton').addEventListener('click', function() {
+                    // 他の口コミセクションを表示
+                    document.querySelector('.info--other-review').style.display = 'block';
+
+                    // 口コミアイテムを取得し、評価を設定
+                    const reviewItems = document.querySelectorAll('.info-review-item');
+
+                    // 他のユーザーの口コミ情報をJavaScriptの配列に変換
+                    const otherReviews = {!! json_encode($otherReviews) !!};
+
+                    // 各口コミアイテムについて処理を行う
+                    reviewItems.forEach((item, index) => {
+                        const rating = otherReviews[index] ? otherReviews[index].rating :
+                            0; // 各口コミの評価を取得
+                        const stars = item.querySelectorAll('.info-rating .star');
+
+                        // 評価に基づいて星を表示する
+                        stars.forEach((star, i) => {
+                            if (i < rating) {
+                                star.classList.add('filled');
+                            } else {
+                                star.classList.remove('filled');
+                            }
+                        });
+                    });
+
+                    // ページの一番下のラインを表示
+                    document.querySelector('.info__line-bottom').style.display = 'block';
+                });
             });
         </script>
     @endsection

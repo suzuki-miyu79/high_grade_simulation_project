@@ -96,4 +96,15 @@ class ReviewController extends Controller
 
         return redirect()->route('restaurant.detail', ['restaurant_id' => $restaurant_id])->with('success', '口コミを削除しました。');
     }
+
+    // 口コミ取得機能
+    public function fetchReviews($restaurant_id)
+    {
+        // 現在のユーザーの口コミを除いた口コミを取得
+        $reviews = Review::where('restaurant_id', $restaurant_id)
+            ->where('user_id', '!=', auth()->id())
+            ->get();
+
+        return response()->json(['reviews' => $reviews]);
+    }
 }

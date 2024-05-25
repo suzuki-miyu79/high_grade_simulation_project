@@ -127,15 +127,17 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::findOrFail($restaurant_id);
         $user = Auth::user();
 
-        $userReview = null;
-        if ($user) {
-            // ユーザーがこの店舗に対して既に口コミを投稿しているかを確認
-            $userReview = Review::where('restaurant_id', $restaurant_id)
-                ->where('user_id', $user->id)
-                ->first();
-        }
+        // ユーザーの口コミ情報の取得
+        $userReview = Review::where('restaurant_id', $restaurant_id)
+            ->where('user_id', auth()->id())
+            ->first();
 
-        return view('restaurant-detail', compact('restaurant', 'userReview'));
+        // 他のユーザーの口コミ情報の取得
+        $otherReviews = Review::where('restaurant_id', $restaurant_id)
+            ->where('user_id', '!=', auth()->id())
+            ->get();
+
+        return view('restaurant-detail', compact('restaurant', 'userReview', 'otherReviews'));
     }
 
     /**

@@ -83,7 +83,7 @@
                     <div class="form-group">
                         <label for="image">画像の追加</label>
                         <div id="image-dropzone" class="dropzone"
-                            style="background-image: url('{{ $review->image ? asset('storage/' . $review->image) : 'none' }}')">
+                            style="background-image: url('{{ $review->image_path }}')">
                             クリックして画像を追加<br><span>またはドラッグアンドドロップ</span>
                             <input type="file" id="image" name="image" accept="image/jpeg, image/png"
                                 style="display: none;" onchange="previewImage(event)">

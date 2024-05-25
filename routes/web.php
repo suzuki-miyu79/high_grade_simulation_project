@@ -115,6 +115,9 @@ Route::middleware('auth')->group(function () {
     // 口コミ削除機能
     Route::delete('/review/{restaurant_id}/{review_id}/destroy', [ReviewController::class, 'destroy'])->name('review.destroy');
 
+    // 口コミ取得
+    Route::get('/review/{restaurant_id}/fetch', [ReviewController::class, 'fetchReviews'])->name('reviews.fetch');
+
     // 店舗情報登録（CSVインポート）
     Route::post('/shop-management/import', [RestaurantController::class, 'import'])->name('restaurant.import');
 });
