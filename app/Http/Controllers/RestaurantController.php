@@ -193,11 +193,11 @@ class RestaurantController extends Controller
                 // レストランをデータベースに登録
                 Restaurant::create([
                     'user_id' => $userId, // ログインユーザーのIDを提供
-                    'name' => $record['name'],
-                    'image' => $record['image'],
                     'area_id' => $area->id,
                     'genre_id' => $genre->id,
+                    'name' => $record['name'],
                     'overview' => $record['overview'],
+                    'image' => $record['image'],
                 ]);
             }
 
