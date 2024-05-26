@@ -112,6 +112,11 @@
                     @endforeach
                 </div>
             </div>
+            {{-- ほかのユーザーが投稿した口コミがない場合に表示 --}}
+            <div class="info--other-review-none" style="display: none;">
+                <div class="info__line-top"></div>
+                <p>他のユーザーが投稿した口コミはありません。</p>
+            </div>
             <div class="info__line-bottom" style="display: none;"></div>
         </div>
 
@@ -244,13 +249,16 @@
                     // 他のユーザーの口コミ情報をJavaScriptの配列に変換
                     const otherReviews = {!! json_encode($otherReviews) !!};
 
-                    if (otherReviews.length === 0 && rating === 0) {
+                    if (otherReviews.length === 0 && rating === 0) { //　口コミが1件もない場合
                         // 上のラインを表示
                         document.querySelector('.info__line-top').style.display = 'block';
                         // 口コミがない場合、メッセージを表示
                         document.querySelector('.info--other-review').innerHTML = "この店舗の口コミはまだありません";
                         // 下のラインを表示
                         document.querySelector('.info__line-bottom').style.display = 'block';
+                    } else if (otherReviews.length === 0) {
+                        // 他のユーザーが投稿した口コミがない場合に表示
+                        document.querySelector('.info--other-review-none').style.display = 'block';
                     } else {
                         // 各口コミアイテムについて処理を行う
                         reviewItems.forEach((item, index) => {

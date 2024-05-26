@@ -285,6 +285,10 @@
         width: 100%;
     }
 
+    .info__line-bottom {
+        width: 110%;
+    }
+
     .detail-page__content-reservation {
         position: relative;
         top: 0;
