@@ -174,4 +174,4 @@
 name,area,genre,overview,image
 鮨屋鈴木,東京都,寿司,最最高の寿司がお楽しみいただけます。,https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg
 ```
-- 入力が完了したら、エンコードを「UTF-8」形式に設定し、ファイル名を「任意のファイル名.csv」で保存します。
+- 入力が完了したら、ファイルの種類を「すべてのファイル」、エンコードを「UTF-8」形式に設定し、ファイル名を「任意のファイル名.csv」で保存します。
