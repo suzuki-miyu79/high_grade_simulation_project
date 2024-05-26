@@ -114,20 +114,20 @@
   ```
 ### 4．phpMyAdminを追加する
 - 次の設定をdocker-compose.ymlに追加します。
-```
-   phpmyadmin:
-        image: phpmyadmin/phpmyadmin
-        links:
-            - mysql:mysql
-        ports:
-            - 8080:80
-        environment:
-            MYSQL_USERNAME: '${DB_USERNAME}'
-            MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
-            PMA_HOST: mysql
-        networks:
-            - sail
-```
+  ```
+     phpmyadmin:
+          image: phpmyadmin/phpmyadmin
+          links:
+              - mysql:mysql
+          ports:
+              - 8080:80
+          environment:
+              MYSQL_USERNAME: '${DB_USERNAME}'
+              MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+              PMA_HOST: mysql
+          networks:
+              - sail
+  ```
 ### 5．Laravel Breeze(ユーザー認証パッケージ)のインストール
 - larabel/breezeのパッケージを追加します。
 
@@ -170,8 +170,8 @@
 ![スクリーンショット 2024-05-26 013311](https://github.com/suzuki-miyu79/high_grade_simulation_project/assets/144597636/5266afaa-770c-44e5-96b0-7b928f6505a7)
 - 入力が完了したら、Excelの場合は「CSV UTF-8」形式で保存、Googleスプレッドシートの場合は「カンマ区切り形式（.csv）」でダウンロードします。
 - テキストエディタを使用してcsvファイルを作成する場合は、各フィールドをカンマで区切り、各レコードを新しい行に記述します。
-```
-name,area,genre,overview,image
-鮨屋鈴木,東京都,寿司,最最高の寿司がお楽しみいただけます。,https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg
-```
+  ```
+  name,area,genre,overview,image
+  鮨屋鈴木,東京都,寿司,最最高の寿司がお楽しみいただけます。,https://coachtech-matter.s3-ap-northeast-1.amazonaws.com/image/sushi.jpg
+  ```
 - 入力が完了したら、ファイルの種類を「すべてのファイル」、エンコードを「UTF-8」形式に設定し、ファイル名を「任意のファイル名.csv」で保存します。
