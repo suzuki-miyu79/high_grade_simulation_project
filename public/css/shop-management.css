@@ -125,6 +125,11 @@
     border: none;
     padding: 0.5em 1em;
     color: #fff;
+    cursor: pointer;
+}
+
+.restaurant-info__import-form button:hover {
+    background-color: #0004E0;
 }
 
 .line {
