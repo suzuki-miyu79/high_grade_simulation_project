@@ -244,8 +244,8 @@
                     // 他のユーザーの口コミ情報をJavaScriptの配列に変換
                     const otherReviews = {!! json_encode($otherReviews) !!};
 
-                    if (otherReviews.length === 0) {
-                        // ↑のラインを表示
+                    if (otherReviews.length === 0 && rating === 0) {
+                        // 上のラインを表示
                         document.querySelector('.info__line-top').style.display = 'block';
                         // 口コミがない場合、メッセージを表示
                         document.querySelector('.info--other-review').innerHTML = "この店舗の口コミはまだありません";
