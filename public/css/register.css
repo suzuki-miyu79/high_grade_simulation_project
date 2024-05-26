@@ -69,3 +69,17 @@ main {
     color: red;
     font-size: 0.9em;
 }
+
+@media screen and (max-width: 480px) {
+    .register__content {
+        margin: 0 auto;
+        width: 21em;
+        border-radius: 5px;
+        overflow: hidden;
+        box-shadow: 2px 2px 5px grey;
+    }
+
+    .register-form__input input {
+        width: 18em;
+    }
+}
