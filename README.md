@@ -157,7 +157,14 @@
   
   ./vendor/bin/sail artisan schedule:work
 
-### 10．csvファイルの記述方法
+### 10．画像を格納するディレクトリを作成
+- 店舗登録、口コミ投稿時にアップロードする画像を格納するディレクトリを作成します。
+  
+  mkdir -p storage/app/public/images
+
+  mkdir storage/app/public/review_images
+
+### 11．csvファイルの記述方法
 - 店舗情報のインポートに使用するcsvファイルは、ExcelやGoogleスプレッドシートなどのスプレッドシートソフトを使用して、データを入力します。
 - 最初の行にヘッダーを入力し、その下に各レコードのデータを入力します。
 ![スクリーンショット 2024-05-26 013311](https://github.com/suzuki-miyu79/high_grade_simulation_project/assets/144597636/5266afaa-770c-44e5-96b0-7b928f6505a7)
