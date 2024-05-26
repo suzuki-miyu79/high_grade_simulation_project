@@ -62,11 +62,12 @@
 
 @media screen and (max-width: 768px) {
     .modal-content {
-        width: 100%;
-        height: 100%;
-        background-color: #fff;
-        margin: 0;
-        box-sizing: border-box;
         padding: 2.5em 4em 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .modal-content {
+        padding: 2.5em 3em 0;
     }
 }
