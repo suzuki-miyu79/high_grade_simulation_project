@@ -77,6 +77,12 @@ body {
     margin-top: 0.5em;
 }
 
+@media screen and (max-width: 1200px) {
+    body {
+        padding: 2.5em 4em;
+    }
+}
+
 @media screen and (max-width: 768px) {
     body {
         padding: 2.5em 4em;
@@ -95,7 +101,7 @@ body {
 
 @media screen and (max-width: 480px) {
     body {
-        padding: 2.5em 3em;
+        padding: 2.5em 1em;
     }
 
     .alert-success {
