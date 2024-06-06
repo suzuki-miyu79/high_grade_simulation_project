@@ -48,3 +48,10 @@
     color: #fff;
     cursor: pointer;
 }
+
+@media screen and (max-width: 480px) {
+    .mail__content-form {
+    padding: 1em;
+    margin-bottom: 0;
+}
+}
