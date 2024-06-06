@@ -118,8 +118,8 @@
 
 .restaurant-card {
     position: relative;
-    width: 20em;
-    height: 20em;
+    width: 19em;
+    height: 19em;
     background-color: #fff;
     border-radius: 5px;
     overflow: hidden;
@@ -206,39 +206,11 @@
         padding: 0 1em;
         width: auto;
     }
-}
-
-
-@media screen and (max-width: 768px) {
-    .header {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .header__form {
-        margin-top: 0.5em;
-        display: flex;
-        flex-direction: column;
-    }
-
-    .sort {
-        margin-bottom: 1em;
-        width: 11em;
-    }
-
-    .search {
-        margin-left: 0;
-    }
-
-    .search input {
-        padding: 0 1em;
-        width: 90%;
-    }
 
     .restaurant-card {
         position: relative;
-        width: 18em;
-        height: 18em;
+        width: 17em;
+        height: 17em;
         background-color: #fff;
         border-radius: 5px;
         overflow: hidden;
@@ -269,6 +241,34 @@
         color: #fff;
         cursor: pointer;
         text-decoration: none;
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header__form {
+        margin-top: 0.5em;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sort {
+        margin-bottom: 1em;
+        width: 11em;
+    }
+
+    .search {
+        margin-left: 0;
+    }
+
+    .search input {
+        padding: 0 1em;
+        width: 90%;
     }
 }
 
