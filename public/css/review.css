@@ -13,7 +13,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 5em;
-    padding: 0 8em 0 3em;
+    padding: 0 5em 0 3em;
 }
 
 .left-top {
@@ -111,7 +111,7 @@
 
 /* 以下、画面右側 */
 .review-page__content-right {
-    margin-left: 6em;
+    margin-left: 5em;
 }
 
 .form-group {
@@ -146,7 +146,7 @@
 }
 
 .form-group-review textarea {
-    width: 36em;
+    width: 30em;
     height: 8em;
     background-color: #f2f2f2;
     border: 3px solid #c4c4c4;
@@ -213,6 +213,24 @@
     cursor: pointer;
 }
 
+@media screen and (max-width: 1200px) {
+    .review-page__content-inner {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .review-page__line {
+        margin: 2em 6em;
+        width: 30em;
+        height: 2px;
+        background-color: #c4c4c4;
+    }
+
+    .button button {
+        width: 20em;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .review-page__content-inner {
         display: flex;
@@ -225,24 +243,25 @@
     }
 
     .left-top {
-        width: 33em;
+        width: 100%;
+        text-align: center;
         margin-bottom: 1em;
     }
 
     .left-top p {
-        font-size: 2.2rem;
+        font-size: 2rem;
         margin: 0;
     }
 
     .review-page__line {
-        margin: 2em 6em;
-        width: 30em;
+        margin: 2em 0;
+        width: 100%;
         height: 2px;
         background-color: #c4c4c4;
     }
 
     .review-page__content-right {
-        margin: 0 5em;
+        margin: 0;
     }
 
     .form-group-review textarea {
@@ -253,31 +272,33 @@
         padding: 4em 0 0;
         height: 10em;
     }
-
-    .button button {
-        width: 20em;
-    }
 }
 
 @media screen and (max-width: 480px) {
 
     .left-top {
-        width: 22em;
+        width: 90%;
         margin-bottom: 1em;
     }
 
-    .review-page__line {
-        margin: 2em 2em;
-        width: 20em;
-        height: 2px;
-        background-color: #c4c4c4;
+    .restaurant-card {
+    width: 18em;
+    height: 18em;
     }
 
-    .review-page__content-right {
-        margin: 0 1em;
+    .content__tag {
+        margin: 0.4em 0 0.6em 0;
+    }
+
+    .form-group label {
+        font-size: 1.4rem;
+    }
+
+    .star-rating span {
+        font-size: 3rem;
     }
 
     .button button {
-        width: 15em;
+        width: 13em;
     }
 }
