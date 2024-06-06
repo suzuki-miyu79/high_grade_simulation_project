@@ -93,7 +93,7 @@
                                     {{-- 削除リンク：管理者のみ表示 --}}
                                     @if (auth()->user()->role === 'admin')
                                         <form
-                                            action="{{ route('review.destroy', ['restaurant_id' => $restaurant->id, 'review_id' => $userReview->id]) }}"
+                                            action="{{ route('review.destroy', ['restaurant_id' => $restaurant->id, 'review_id' => $review->id]) }}"
                                             method="POST" style="display: inline;">
                                             @csrf
                                             @method('DELETE')

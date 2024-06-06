@@ -72,8 +72,10 @@ class ReviewController extends Controller
         $review->review = $request->review;
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('images', 'public');
-            $review->image = $imagePath;
+            // 画像を保存してパスを取得
+            $imagePath = $request->file('image')->store('review_images', 'public');
+            // パスを保存
+            $review->image_path = asset('storage/' . $imagePath);
         }
 
         $review->save();
