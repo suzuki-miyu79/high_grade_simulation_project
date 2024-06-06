@@ -90,7 +90,7 @@ class ReviewController extends Controller
         $review = Review::where('id', $review_id)->where('restaurant_id', $restaurant_id)->first();
 
         // 口コミが存在しない、または現在のユーザーがこの口コミを削除する権限がない場合、リダイレクト
-        if (!$review || (auth()->user()->id !== $review->user_id && !auth()->user()->is_admin)) {
+        if (!$review || (auth()->user()->id !== $review->user_id && auth()->user()->role !== 'admin')) {
             return redirect()->route('restaurant.detail', ['restaurant_id' => $restaurant_id])->with('error', '削除権限がありません。');
         }
 

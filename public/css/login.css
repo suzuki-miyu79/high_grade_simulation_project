@@ -73,13 +73,13 @@ main {
 @media screen and (max-width: 480px) {
     .login__content {
         margin: 0 auto;
-        width: 21em;
+        width: 100%;
         border-radius: 5px;
         overflow: hidden;
         box-shadow: 2px 2px 5px grey;
     }
 
     .login-form__input input {
-        width: 18em;
+        width: auto;
     }
 }
