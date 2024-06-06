@@ -193,15 +193,6 @@
 }
 
 @media screen and (max-width: 1200px) {
-    .header {
-        display: flex;
-        flex-direction: column;
-    }
-
-     .header__form {
-        margin-top: 1em;
-     }
-
     .sort {
         width: auto;
         margin-right: 2em;
